@@ -7,11 +7,17 @@ from utils import read_data, get_f1
 from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
+from tabulate import tabulate
+
+
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 
 
 class NodeEdgeDetector(torch.nn.Module):
-	def __init__(self, bert, dropout=0.5, clip_len=True, **kw):
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
 		super().__init__(**kw)
 		self.bert = bert
 		dim = self.bert.config.hidden_size
@@ -22,6 +28,8 @@ class NodeEdgeDetector(torch.nn.Module):
 		self.edgeend = torch.nn.Linear(dim, 1)
 		self.dropout = torch.nn.Dropout(p=dropout)
 		self.clip_len = clip_len
+
+		self.tokenizer = tokenizer
 
 	def forward(self, x):	   # x: (batsize, seqlen) ints
 		mask = (x != 0).long()
@@ -86,13 +94,13 @@ class TrainingLoop:
 				self.model.zero_grad()
 				X, y = batch
 				X = X.to(device); y = y.to(device)
-				logits = self.model(X) # [4, 4, 31]
+				logits = self.model(X) 
 				loss = loss_function(logits, one_hot(y, num_classes=logits.size()[-1]).float(),
-                             reduction='sum')
+							 reduction='sum')
 				losses.append(loss)
 				loss.backward()
 				self.optimizer.step()
-			print(f'Epoch number: {epoch+1} Train Loss is equal: {sum(losses)/len(losses)}') 
+			logging.info(f'Epoch number: {epoch+1} Train Loss is equal: {sum(losses)/len(losses)}') 
 			self.eval(eval_dataloader, loss_function, epoch, device)
 
 
@@ -105,12 +113,9 @@ class TrainingLoop:
 				X = X.to(device); y = y.to(device)
 				logits = self.model(X)
 				loss = loss_function(logits, one_hot(y, num_classes=logits.size()[-1]).float(),
-                             reduction='sum')
+							 reduction='sum')
 				losses.append(loss)
-    
-		# cliped_logits = X[0][:]
-		# print(logits.size(), torch.argmax(logits[0:10], dim=2))
-		print(f'Epoch number: {epoch+1} Eval Loss is equal: {sum(losses)/len(losses)}')
+		logging.info(f'Epoch number: {epoch+1} Eval Loss is equal: {sum(losses)/len(losses)}')
 
 	def predict(self, dataloader, device, evaluate=True):
 		self.model.eval()
@@ -137,11 +142,36 @@ class TrainingLoop:
 			pred_edges_border = self.predicts[:, 2:]
 			get_f1(pred_nodes_border, gold_nodes_border)
 			get_f1(pred_edges_border, gold_edges_border)
+	
+	def save(self, save_path='./models/node_edge_bert.pt'):
+		torch.save(self.model, save_path)
+	
+	def load(self, save_path='./models/node_edge_bert.pt'):
+		self.model = torch.load(save_path)
+
+	def readable_predict(self, _input='how is the weather tomorrow?'):
+		addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
+		wordstoberttokens = lambda string:self.model.tokenizer.tokenize(string)
+		berttokenstoids = lambda tokens:self.model.tokenizer.convert_tokens_to_ids(tokens)
+		input_token_ids = berttokenstoids(wordstoberttokens(addspecialtokens(_input)))
+		input_tensors = torch.tensor([input_token_ids]).long()
+		with torch.no_grad():
+			_output = self.model(input_tensors)
+		borders = torch.argmax(_output, dim=2).detach().cpu().numpy()[0]
+		node = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[0]:borders[1]])
+		edge = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[2]:borders[3]])
+		data = [[_input, node, edge]]
+		print(tabulate(data, headers=["Question", "Node", "Edge"]))
+		
+
+
+
+		
 
 
 
 
-      
+	  
 
 
 
@@ -152,7 +182,8 @@ class TrainingLoop:
 if __name__=='__main__':
 	train, valid, test = read_data()
 	bert = BertModel.from_pretrained("bert-base-uncased")
-	node_edge_detector = NodeEdgeDetector(bert, dropout=torch.tensor(0.5))
+	tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+	node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
 	optimizer = AdamW
 	kw = {'lr':0.0002, 'weight_decay':0.1}
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
@@ -165,8 +196,9 @@ if __name__=='__main__':
 	test_dataloader = DataLoader(dataset=test_dataset, batch_size=400, shuffle=False, pin_memory=True)
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss
-	tl.train(train_dataloader, valid_dataloader, loss)
-	tl.predict(test_dataloader, device)
+	# tl.train(train_dataloader, valid_dataloader, loss)
+	# tl.predict(test_dataloader, device)
+	tl.readable_predict()
 	
 	##########################################################
 	# dataset = BordersDataset()

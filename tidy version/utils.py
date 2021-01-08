@@ -1,6 +1,8 @@
 from sklearn.model_selection import train_test_split
 import numpy as np
 import os
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 def read_data(path='./bertified/'):
 	tokens_matrix = np.load(os.path.join(path, 'tokenmat.npy'))
@@ -22,21 +24,20 @@ def get_f1(predicts, golden):
 	recall = overlap / expected
 	precision = overlap / predicted
 	f1 = 2 * recall * precision / (recall + precision)
-	print("Dataset-wide F1, precision and recall:")
-	print(f1.item(), precision.item(), recall.item())
+	logging.info("Dataset-wide F1, precision and recall:")
+	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	overlap = (overlap_end - overlap_start)
 	recall = overlap / (gold_end - gold_start)
 	precision = overlap / (pred_end - pred_start)
 	f1 = 2 * recall * precision / (recall + precision)
-	# print((recall > 1).nonzero(), (precision > 1).nonzero())
 	recall = recall.mean()
 	precision = precision.mean()
 	acc = (f1 == 1).mean()
 	f1 = f1.mean()
-	print("Averaged F1, precision and recall:")
-	print(f1.item(), precision.item(), recall.item())
-	print("Span accuracy")
-	print(acc)
+	logging.info("Averaged F1, precision and recall:")
+	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
+	logging.info("Span accuracy")
+	logging.info(acc)
 
 if __name__=='__main__':
 	train, valid, test = read_data()
