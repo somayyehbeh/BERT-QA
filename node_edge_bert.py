@@ -7,6 +7,7 @@ from utils import read_data, get_f1
 from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
+np.seterr(divide='ignore', invalid='ignore')
 from tabulate import tabulate
 from tqdm import tqdm
 
@@ -151,6 +152,7 @@ class TrainingLoop:
 			pred_nodes_border = self.predicts[:, :2]
 			pred_edges_border = self.predicts[:, 2:]
 			get_f1(pred_nodes_border, gold_nodes_border)
+			print('')
 			get_f1(pred_edges_border, gold_edges_border)
 	
 	def save(self, save_path='./models/node_edge_bert.pt'):
