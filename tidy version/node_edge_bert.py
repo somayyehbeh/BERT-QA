@@ -8,6 +8,7 @@ from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
 from tabulate import tabulate
+from tqdm import tqdm
 
 
 
@@ -17,6 +18,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class NodeEdgeDetector(torch.nn.Module):
+	'''
+	Neural Network architecture!
+	'''
 	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
 		super().__init__(**kw)
 		self.bert = bert
@@ -52,6 +56,9 @@ class NodeEdgeDetector(torch.nn.Module):
 
 
 class BordersDataset(Dataset):
+	'''
+		Convert Data to proper Tensor dataset
+	'''
 	def __init__(self, data):
 		# convert into tensors
 		self.tokens_matrix = torch.from_numpy(data[0]).long()
@@ -68,6 +75,9 @@ class BordersDataset(Dataset):
 
 
 class TrainingLoop:
+	'''
+	Everything related to model training
+	'''
 	def __init__(self, model, optimizer, freezeemb=True, 
 				 epochs=6, save_path='./models/', **kw):
 		self.model = model
@@ -82,7 +92,6 @@ class TrainingLoop:
 		self.epochs = epochs
 		self.save_path = save_path
 		self.predicts = None
-
 	def train(self, dataloader, eval_dataloader, loss_function):
 		device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 		self.model.to(device)
@@ -90,7 +99,8 @@ class TrainingLoop:
 		for epoch in range(self.epochs):
 			self.model.train()
 			losses = []
-			for batch in dataloader:
+
+			for _, batch in enumerate(tqdm(dataloader, desc=f"Train Epoch Number {epoch+1}")):
 				self.model.zero_grad()
 				X, y = batch
 				X = X.to(device); y = y.to(device)
@@ -107,7 +117,7 @@ class TrainingLoop:
 	def eval(self, dataloader, loss_function, epoch, device):
 		self.model.eval()
 		losses = []
-		for batch in dataloader:
+		for _, batch in enumerate(tqdm(dataloader, desc=f"Eval Epoch Number {epoch+1}")):
 			with torch.no_grad():
 				X, y = batch
 				X = X.to(device); y = y.to(device)
@@ -120,7 +130,7 @@ class TrainingLoop:
 	def predict(self, dataloader, device, evaluate=True):
 		self.model.eval()
 		predicts = []
-		for batch in dataloader:
+		for _, batch in enumerate(tqdm(dataloader, desc=f"Predicting ...")):
 			with torch.no_grad():
 				X, _ = batch
 				X = X.to(device)
@@ -149,7 +159,7 @@ class TrainingLoop:
 	def load(self, save_path='./models/node_edge_bert.pt'):
 		self.model = torch.load(save_path)
 
-	def readable_predict(self, _input='how is the weather tomorrow?'):
+	def readable_predict(self, _input='Where was Bill Gates Born?'):
 		addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
 		wordstoberttokens = lambda string:self.model.tokenizer.tokenize(string)
 		berttokenstoids = lambda tokens:self.model.tokenizer.convert_tokens_to_ids(tokens)
@@ -189,34 +199,19 @@ if __name__=='__main__':
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
 	
 	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=400, shuffle=True, pin_memory=True)
+	train_dataloader = DataLoader(dataset=train_dataset, batch_size=4, shuffle=True, pin_memory=True)
 	valid_dataset = BordersDataset(valid)
-	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=400, shuffle=False, pin_memory=True)
+	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=4, shuffle=False, pin_memory=True)
 	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=400, shuffle=False, pin_memory=True)
+	test_dataloader = DataLoader(dataset=test_dataset, batch_size=4, shuffle=False, pin_memory=True)
+	
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss
-	# tl.train(train_dataloader, valid_dataloader, loss)
-	# tl.predict(test_dataloader, device)
+	tl.train(train_dataloader, valid_dataloader, loss)
+	tl.save()
+	##################################################
+	tl.load()
+	tl.predict(test_dataloader, device)
+	##################################################
 	tl.readable_predict()
 	
-	##########################################################
-	# dataset = BordersDataset()
-	# dataloader = DataLoader(dataset=dataset, batch_size=5, shuffle=True)
-	# dataiter = iter(dataloader)
-	# data = dataiter.next()
-	# featurs, labels = data
-	# print(featurs.size, labels.size, labels)
-	# random_input = torch.randint(3, 20000, (5, 15)).long()
-	# bert = BertModel.from_pretrained("bert-base-uncased")
-	# node_edge_detector = NodeEdgeDetector(bert, dropout=torch.tensor(0.5))
-	# output = node_edge_detector(random_input)
-	# print(output.size())
-	# print(output)
-	# torch.save(node_edge_detector, './models/save_test.pt')
-	# model = torch.load('./models/save_test.pt')
-	# model.eval()
-	# output = model(random_input)
-	# print(output.size())
-	# print(output)
-	###################################################
