@@ -159,12 +159,13 @@ class TrainingLoop:
 	def load(self, save_path='./models/node_edge_bert.pt'):
 		self.model = torch.load(save_path)
 
-	def readable_predict(self, _input='Where was Bill Gates Born?'):
+	def readable_predict(self, device, _input='Where was Bill Gates Born?'):
 		addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
 		wordstoberttokens = lambda string:self.model.tokenizer.tokenize(string)
 		berttokenstoids = lambda tokens:self.model.tokenizer.convert_tokens_to_ids(tokens)
 		input_token_ids = berttokenstoids(wordstoberttokens(addspecialtokens(_input)))
 		input_tensors = torch.tensor([input_token_ids]).long()
+		input_tensors = input_tensors.to(device)
 		with torch.no_grad():
 			_output = self.model(input_tensors)
 		borders = torch.argmax(_output, dim=2).detach().cpu().numpy()[0]
@@ -173,20 +174,6 @@ class TrainingLoop:
 		data = [[_input, node, edge]]
 		print(tabulate(data, headers=["Question", "Node", "Edge"]))
 		
-
-
-
-		
-
-
-
-
-	  
-
-
-
-
-
 
 
 if __name__=='__main__':
@@ -199,11 +186,11 @@ if __name__=='__main__':
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
 	
 	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=4, shuffle=True, pin_memory=True)
+	train_dataloader = DataLoader(dataset=train_dataset, batch_size=400, shuffle=True, pin_memory=True)
 	valid_dataset = BordersDataset(valid)
-	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=4, shuffle=False, pin_memory=True)
+	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=100, shuffle=False, pin_memory=True)
 	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=4, shuffle=False, pin_memory=True)
+	test_dataloader = DataLoader(dataset=test_dataset, batch_size=200, shuffle=False, pin_memory=True)
 	
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss
@@ -213,5 +200,5 @@ if __name__=='__main__':
 	tl.load()
 	tl.predict(test_dataloader, device)
 	##################################################
-	tl.readable_predict()
+	tl.readable_predict(device)
 	
