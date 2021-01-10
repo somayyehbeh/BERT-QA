@@ -1,0 +1,100 @@
+625	$ 10	was deducted for	board	$ 10	be deduct for	board	1	0.95320	http://en.wikipedia.org/wiki/Danbury_and_Norwalk_Railroad
+705	$ 10,000	came from	J.J.	$ 10,000	come from	j.j.	1	0.93859	http://en.wikipedia.org/wiki/Mark_Dann
+1007	$ 13.8 million	had been raised for	construction of the memorial	$ 13.8 million	have be raise for	construction of the memorial	1	0.91575	http://en.wikipedia.org/wiki/Pentagon_Memorial|http://www.wsaw.com/home/misc/28162289.html
+1112	$ 15.3 million	was paid to	Japan	$ 15.3 million	be pay to	japan	1	0.91996	http://en.wikipedia.org/wiki/Pacific_Proving_Ground
+1179	$ 16,896	was needed just for	dredging	$ 16,896	be need just for	dredging	1	0.91575	http://en.wikipedia.org/wiki/Warren_County_Canal
+1633	$ 23.5 billion	was spent on	sports marketing	$ 23.5 billion	be spend on	sport marketing	1	0.91454	http://en.wikipedia.org/wiki/Sport_sponsorship
+1884	$ 3 million	was spent on	pilot projects	$ 3 million	be spend on	pilot project	1	0.91837	http://en.wikipedia.org/wiki/Chocolate_Protocol
+2147	$ 350,000	has been raised to	date	$ 350,000	have be raise to	date	1	0.94813	http://en.wikipedia.org/wiki/Southern_Pacific_2479
+2695	$ 500 million dollars	were intended for	reconstruction	$ 500 million dollar	be intend for	reconstruction	1	0.91575	http://www.middleeastexplorer.com/Saudi-Arabia/Saudi-foreign-assistance|http://en.wikipedia.org/wiki/Saudi foreign assistance
+2702	$ 500,000	was being allocated to	Sharon Springs	$ 500,000	be be allocate to	sharon springs	1	0.90045	http://en.wikipedia.org/wiki/Sharon_Springs,_New_York
+2846	$ 6.4 billion	went to	the Camorra	$ 6.4 billion	go to	the camorra	1	0.90484	http://en.wikipedia.org/wiki/1980_Irpinia_earthquake
+3215	$ 80,000	was spent for	music rights	$ 80,000	be spend for	music rights	1	0.91953	http://www.nachrichtenmann.de/cgi-bin/metaseek/lexikon_American_Graffiti_en.html|http://en.wikipedia.org/wiki/American_Graffiiti
+3322	$ 9,255	goes to	classroom instruction	$ 9,255	go to	classroom instruction	1	0.90703	http://en.wikipedia.org/wiki/Teaneck,_New_Jersey
+13505	0	is not equal to	1	0	be not equal to	1	2	0.92645	http://open-encyclopedia.com/Invalid_proof|http://www.starrepublic.org/encyclopedia/wikipedia/i/in/invalid_proof.html|http://www.applet-magic.com/dedekind.htm|http://www.mathdaily.com/lessons/Construction_of_real_numbers|http://en.wikilib.com/wiki/Constructions_of_the_real_numbers|http://www.chemistrydaily.com/chemistry/Construction_of_real_numbers|http://en.wikipedia.org/wiki/Construction_of_the_real_numbers
+13555	0	are given	constants	0	be give	constant	1	0.93811	http://www.absoluteastronomy.com/topics/Ito_diffusion|http://en.wikipedia.org/wiki/Ito_diffusion
+13845	0	is for	control options	0	be for	control option	1	0.93349	http://en.wikipedia.org/wiki/Special:Search/IPv4|http://linuxreviews.org/dictionary/IPv4/|http://encyclopedia.vbxml.net/IPv4|http://roadip.com/wiki/IPv4
+13970	0	is reserved for	the Operating System	0	be reserve for	the operating system	1	0.96718	http://en.wikipedia.org/wiki/Scheduling_priority
+14002	0	win at	White Hart Lane	0	win at	white hart lane	1	0.94697	http://en.wikipedia.org/wiki/Willie_Fraser_(footballer)
+14012	0	are automatically	zero	0	be automatically	zero	1	0.93811	http://en.wikipedia.org/wiki/Kodaira-Nakano_vanishing_theorem|http://www.123exp-math.com/t/01701216090/
+14144	0	is exactly	1	0	be exactly	1	1	0.94094	http://www.includipedia.com/wiki/E_%28mathematical_constant%29|http://www.nationmaster.com/encyclopedia/Normal-number|http://ancient-russian-culture.ae.lib.bz/E_n_c_p_d_2.71828.html|http://lcni.uoregon.edu/~mark/Geek_math/Discrete_math/Math_backgound-discrete-math.html|http://www.educationus.net/page836.html|http://simple.itpedia.sfilar.com/wiki/Exponential_function|http://www.algebra.com/algebra/homework/Exponential-and-logarithmic-functions/E_%28mathematical_constant%29.wikipedia|http://en.wikipedia.org/wiki/Base_of_natural_logarithm|http://www.bookrags.com/E_%28mathematical_constant%29|http://www.bookrags.com/wiki/E_%28mathematical_constant%29|http://alien.videoinside.org/E_(mathematical_constant)
+14172	0	is bounded in	Lp	0	be bound in	lp	1	0.90975	http://en.wikipedia.org/wiki/Outer_function
+14176	0	is not	a root	0	be not	a root	1	0.93811	http://en.wikipedia.org/wiki/Root_systems
+14177	0	pertenece	a S.	0	pertenece	a s.	1	0.91043	http://en.wikipedia.org/wiki/es:N%C3%BAmero
+15329	0 to 100 km/h	took about	12 seconds	0 to 100 km/h	take about	12 seconds	1	0.93811	http://wikicars.org/es/Alfa_Romeo_Giulia|http://www.wheelsofitaly.com/wiki/index.php/Alfa_Romeo_Giulia|http://www.shortopedia.com/A/U/Automobiles|http://www.netcarshow.com/alfa_romeo/1962-giulia_berlina/|http://en.wikipedia.org/wiki/Alfa_Romeo_Giulia|http://wikicars.org/ja/Alfa_Romeo_Giulia
+15744	0,	are limits of	limits	0,	be limit of	limit	1	0.96181	http://en.wikipedia.org/wiki/Limit_ordinal
+15757	0,	is in	W.	0,	be in	w.	1	0.95156	http://en.itpedia.sfilar.com/wiki/Linear_subspace|http://encyclopedia.vbxml.net/Linear_subspace|http://en.wikipedia.org/wiki/Linear_Algebra/Subspace
+15916	0-60 mph	takes around	12-13 seconds	0-60 mph	take around	12-13 seconds	1	0.93811	http://www.cars-directory.net/gallery/daihatsu/charade_social/|http://en.wikipedia.org/wiki/Daihatsu%20Charade
+15930	0-60 times	were between	6.5 and 6.7 seconds	0-60 time	be between	6.5 and 6.7 seconds	1	0.93811	http://en.wikipedia.org/wiki/Oldsmobile_442
+15949	0-63	are reserved for	interrupts	0-63	be reserve for	interrupt	1	0.91698	http://en.wikipedia.org/wiki/Scheduling_priority
+16029	0.0	have less of	a chance	0.0	have less of	a chance	2	0.93076	http://psychology.wikia.com/wiki/Item_response_theory|http://en.wikipedia.org/wiki/Latent_trait_analysis
+16542	0.03	s at	30 A.	0.03	s at	30 a.	1	0.94094	http://en.wikipedia.org/wiki/BS_1362
+17349	0.2	can be represented as	210-1	0.2	can be represent as	210-1	1	0.92504	http://en.wikipedia.org/wiki/Binary-Coded_Decimal
+17375	0.2 % of residents	were born in	a foreign country	0.2 % of resident	be bear in	a foreign country	1	0.91184	http://en.wikipedia.org/wiki/Tumbes_(Department_of_Peru)
+17479	0.25-0.5 km	is not	the SI unit	0.25-0.5 km	be not	the si unit	1	0.93811	http://en.wikipedia.org/wiki/Wikipedia:Featured_article_candidates/Featured_log/July_2006
+17639	0.4 % of all households	were made up of	individuals	0.4 % of all household	be make up of	individual	1	0.92747	http://en.wikipedia.org/wiki/Bangor,_WA
+17664	0.4.,	was released on	July 23 , 2006	0.4.,	be release on	july 23 , 2006	1	0.91454	http://en.wikipedia.org/wiki/FLAIM
+17773	0.5 % of 5.5 million	would be	27,500	0.5 % of 5.5 million	would be	27,500	1	0.93811	http://en.wikipedia.org/wiki/List_of_Buddhist_population_by_country
+17791	0.5 arcseconds	is about	14 arcminutes	0.5 arcsecond	be about	14 arcminute	1	0.93811	http://en.wikipedia.org/wiki/BTA-6
+17988	0.7	is n't a fork of	WP	0.7	be not a fork of	wp	1	0.94061	http://en.wikipedia.org/wiki/Wikipedia_talk:Version_1.0_Editorial_Team
+18006	0.7 % of all households	were made up of	individuals	0.7 % of all household	be make up of	individual	1	0.92747	http://en.wikipedia.org/wiki/Kings_Bay_Base
+18009	0.7 % of student	are of	limited English proficiency	0.7 % of student	be of	limited english proficiency	1	0.95993	http://en.wikipedia.org/wiki/Centennial_High_School_(Illinois)
+18012	0.7 % of the total population of Estonia	live in	Hiiu County	0.7 % of the total population of estonia	live in	hiiu county	1	0.92416	http://en.wikipedia.org/wiki/Hiiu County|http://hiiu_county.totallyexplained.com/
+18036	0.702733	was a disused station in	Kent	0.702733	be a disused station in	kent	1	0.90975	http://en.wikipedia.org/wiki/Port_Victoria_railway_station
+18109	0.8 %	gave a single response of	English	0.8 %	give a single response of	english	1	0.91028	http://en.wikipedia.org/wiki/Ironside,_Quebec
+18114	0.8 % of the students	were of	Asian descent	0.8 % of the student	be of	asian descent	1	0.95993	http://en.wikipedia.org/wiki/Sherman_Elementary
+18306	0.999	must equal	1	0.999	must equal	1	1	0.92504	http://en.wikipedia.org/wiki/Proof_that_0.999..._does_not_equal_1
+18335	0/6	would evaluate to	an empty vector	0/6	would evaluate to	an empty vector	1	0.90836	http://en.wikipedia.org/wiki/Criticism_of_the_APL_programming_language
+18370	00	is given to	absentees	00	be give to	absentee	1	0.94813	http://en.wikipedia.org/wiki/Academic_grading_in_Denmark|http://www.englishgratis.com/1/wikibooks/education/grade.htm|http://andreagassi.en.kangoshi.info/en/Mark O\|http://linea.8.metropolitana.di.napoli.it.itreal.info/en/D. Terrence Langendoen
+18765	000	is a district in	Oruzgan Province	000	be a district in	oruzgan province	1	0.96000	http://en.wikipedia.org/wiki/Gizab_District
+18773	000	is a parody of	007	000	be a parody of	007	1	0.95993	http://en.wikipedia.org/wiki/Parodies_of_James_Bond
+18812	000 Jews	be handed over for	deportation	000 jew	be hand over for	deportation	1	0.91575	http://en.wikipedia.org/wiki/Fascism_as_an_international_phenomenon
+19318	002	is immediately captured by	the SAS	002	be immediately capture by	the sas	1	0.90925	http://en.wikipedia.org/wiki/Living_daylights|http://videoinside.org/The_Living_Daylights
+19490	005	appears in	Thunderball	005	appear in	thunderball	1	0.95804	http://en.wikipedia.org/wiki/Double_0_Agent
+19650	007 role	offered to	Ewan	007 role	offer to	ewan	1	0.96357	http://en.wikipedia.org/wiki/Ewan_MacGregor|http://fletrix.com/wiki/Ewan_McGregor
+19976	01	is due to be published in	January 2008	01	be due to be publish in	january 2008	1	0.95093	http://en.wikipedia.org/wiki/Mitch_Byrd
+20016	01 001	was withdrawn in	1979	01 001	be withdraw in	1979	1	0.91577	http://en.wikipedia.org/wiki/British_Rail_Class_01
+20089	01-222 1234	was in	Westminster	01-222 1234	be in	westminster	1	0.92759	http://www.mumbaiforums.com/020.html|http://destall.com/wiki/020|http://en.wikipedia.org/wiki/London_Director_Area
+20182	010	is the debut album from	ulysses	010	be the debut album from	ulyss	1	0.93811	http://en.wikipedia.org/wiki/010(album)|http://www.hicelebs.com/albums/010/
+20325	015x	is made available for	assignment	015x	be make available for	assignment	1	0.91575	http://roadinet.com/wiki/Telephone_numbers_in_Malaysia|http://en.wikipedia.org/wiki/+60
+20589	02 March 2007	retrieved on	2 September 2007	02 march 2007	retrieve on	2 september 2007	1	0.91454	http://en.wikipedia.org/wiki/Jessica_Barden
+20764	02138	published its last issue in	the Spring of 2008	02138	publish its last issue in	the spring of 2008	1	0.91184	http://en.wikipedia.org/wiki/02138
+20827	02714	sings of	England	02714	sing of	england	1	0.93177	http://en.wikipedia.org/wiki/Hayden_Coffin
+20850	02:00	Went to	bed	02:00	go to	bed	1	0.95736	http://en.wikipedia.org/wiki/User_talk:Eliz81/Archive_1
+21656	04.9196 Rock	is a village in	Cornwall	04.9196 rock	be a village in	cornwall	1	0.90975	http://en.wikipedia.org/wiki/Rock%2C_Cornwall
+21737	042 and 045 0	are also owned by	TeliaSonera	042 and 045 0	be also own by	teliasonera	1	0.90925	http://en.wikipedia.org/wiki/Telephone_numbering_in_Finland|http://www.mumbaiforums.com/Telephone_numbers_in_Finland.html
+22195	0514	had been retired due to	fire	0514	have be retire due to	fire	1	0.95736	http://en.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_de_transport_de_l%27Outaouais
+22235	056	also ends in	a 6	056	also end in	a 6	1	0.95093	http://linea.8.metropolitana.di.napoli.it.itreal.info/en/divisibility rule|http://linea.8.metropolitana.di.napoli.it.itreal.info/en/divisor|http://en.wikipedia.org/wiki/perfect_number|http://simple.itpedia.sfilar.com/wiki/Perfect_number|http://schools-wikipedia.org/wp/p/Perfect_number.htm|http://simple.wikipedia.org/wiki/Perfect_number|http://perfect-number.wikix.ipupdater.com/|http://www.answers.com/topic/perfect-number|http://www.bigpedia.com/encyclopedia/Perfect_number|http://encyclopedia.vbxml.net/Perfect_number|http://www.mathdaily.com/lessons/Perfect_number
+22243	0579655	was granted on	March 5 , 1997	0579655	be grant on	march 5 , 1997	1	0.91578	http://en.wikipedia.org/wiki/T_641/00
+23076	07 :08 , 14 February 2009	Added tag to	article	07 :08 , 14 february 2009	add tag to	article	1	0.92298	http://en.wikipedia.org/wiki/Special:Contributions/Wisdom89
+23312	07009	was exported to	Italy	07009	be export to	italy	1	0.96357	http://en.wikipedia.org/wiki/Class_07
+23323	070796 Live	is a live album by	Earth	070796 live	be a live album by	earth	1	0.94697	http://en.wikipedia.org/wiki/070796_Live
+23401	07732	is a Zip code for	Highlands	07732	be a zip code for	highlands	1	0.94297	http://mallrats.totallyexplained.com/|http://en.wikipedia.org/wiki/Miss_Ivannah
+23431	07B	made landfall in	Bangladesh	07b	make landfall in	bangladesh	1	0.91250	http://en.wikipedia.org/wiki/1998_Pacific_typhoon_season
+23806	08	was produced in	China	08	be produce in	china	1	0.95804	http://en.wikipedia.org/wiki/Evangelion_%28mecha%29
+24214	0846	therefore became	01846	0846	therefore become	01846	1	0.93811	http://en.wikipedia.org/wiki/Lisburn_Area_Code
+24334	08@	was the ruler of	Bulgaria 831836	08@	be the ruler of	bulgaria 831836	1	0.95993	http://en.wikipedia.org/wiki/Malamir_of_Bulgaria
+24337	08W	formed on	August 15	08w	form on	august 15	1	0.93285	http://en.wikipedia.org/wiki/1957_Pacific_typhoon_season
+25069	0@CAL	is the central bank of	Belarus	0@cal	be the central bank of	belarus	1	0.94090	http://en.wikipedia.org/wiki/Central_Bank_of_Belarus|http://www.search.com/reference/Republic_of_Belarus
+25142	0day	exploit in	2 hours	0day	exploit in	2 hour	1	0.94069	http://en.wikipedia.org/wiki/Safari_3|http://dev.upian.com/hotlinks/archives/2007/06/12/|http://www.encyklopedia.bezkarni.pl/Safari_%28web_browser%29.html|http://encyclopedia.vbxml.net/Safari_(web_browser)
+25163	0n30	is also sometimes called	0n2	0n30	be also sometimes call	0n2	1	0.93811	http://en.wikipedia.org/wiki/7_mm_scale
+25367	1	Please do n't use	capitals	1	please do not use	capital	1	0.93811	http://en.wikipedia.org/wiki/Wikipedia:Reference_desk_archive/Miscellaneous/November_2005
+25833	1	is divisible by	d	1	be divisible by	d	1	0.93811	http://en.wikipedia.org/wiki/Terminating_decimal|http://academickids.com/encyclopedia/index.php/Recurring_decimals|http://arthistoryclub.com/art_history/Recurring_decimal|http://aswemaythink.en.jessicasimpsonworld.info/en/periodic table|http://www.fact-archive.com/encyclopedia/Recurring_decimal
+25924	1	End of	the World	1	end of	the world	1	0.90323	http://en.wikipedia.org/wiki/Johns_Hopkins_Mental_Notes
+25927	1	is not an element of	the Mandelbrot set	1	be not an element of	the mandelbrot set	1	0.91236	http://en.wikipedia.org/wiki/Mandlebrot_set|http://www.juliantrubin.com/encyclopedia/mathematics/mandelbrot_set.html|http://www.scientific-web.com/en/Mathematics/Fractals/MandelbrotSet.html|http://schools-wikipedia.org/wp/m/Mandelbrot_set.htm|http://vlab.infotech.monash.edu.au/simulations/fractals/fractals-on-the-complex-plane/|http://our-encyclopedia.com/w/en/Mandelbrot_set|http://www.tripixdesigns.com/blog/about/fractal-art/
+25944	1	Has a bachelors degree in	Chemistry	1	have a bachelor degree in	chemistry	1	0.95804	http://en.wikipedia.org/wiki/Sonal_Ambani
+25949	1	is for	an eye	1	be for	an eye	1	0.93349	http://en.wikipedia.org/wiki/Beetle_drive
+26035	1	's in	charge	1	be in	charge	4	0.92071	http://thenewparent.blogspot.com/|http://www.thenewparent.blogspot.com/|http://thirdworldtraveler.com/Third_World_US/Demo_Observed_2004.html|http://www.swflparent.com/COMMUNITY/blogs/newparent/archive/2008/11/10/3-questions-your-child-should-be-able-to-answer.aspx|http://www.swflparent.com/COMMUNITY/blogs/newparent/archive/tags/immaturity/default.aspx|http://www.thirdworldtraveler.com/Election_Reform/America_Observed.html|http://www.brandonweb.com/gbt/sermonpages/proverbs15.htm|http://www.cluetrainat10.com/|http://www.cluetrainat10.com/2008/05/index.html|http://www.training-on-voip.com/|http://www.doinggovernment.com/war/privatize%20war/privatize_the_armed_forces.htm|http://www2.olsentwins.net/multimedia/transcripts/webmaster/webmaster01262001.html|http://toastingnapoleon.blogspot.com/2008_08_01_archive.html|http://www.berith.org/essays/tcv/tcv04.html|http://en.wikipedia.org/wiki/Talk:Sentence_(linguistics)|http://www.medbib.com/Talk:Sentence_(linguistics)|http://soundpolitics.com/archives/005039.html|http://www.berith.org/essays/esch/esch17.html|http://toastingnapoleon.blogspot.com/2008/08/publishing-upside-down.html
+26040	1	calls at	Pulborough	1	call at	pulborough	1	0.90925	http://en.wikipedia.org/wiki/Billingshurst_railway_station
+26042	1	are called	ridges	1	be call	ridge	1	0.93811	http://en.wikipedia.org/wiki/Polyhedral_combinatorics
+26043	1	was released on	CD.	1	be release on	cd.	1	0.91251	http://en.wikipedia.org/wiki/Dick_Latvala
+26089	1	calls at	Sawbridgeworth	1	call at	sawbridgeworth	1	0.90925	http://en.wikipedia.org/wiki/Burnt_Mill_railway_station
+26106	1	calls at	Ashford	1	call at	ashford	1	0.90925	http://en.wikipedia.org/wiki/Feltham_railway_station
+27670	1	is a compilation album by	The Beatles	1	be a compilation album by	the beatles	1	0.90925	http://listverse.com/music/top-10-bestselling-albums/|http://en.wikipedia.org/wiki/The_Beatles_One|http://www.topicala.com/tag/1
+27692	1	returned to	Korat	1	return to	korat	1	0.90484	http://palau.eu/ec-121_warning_starus_navy_en.html|http://en.wikipedia.org/wiki/Lockheed_EC-121
+27951	1	is a bill in	the United States Congress	1	be a bill in	the united states congress	1	0.95804	http://en.wikipedia.org/wiki/Obama_stimulus_plan
+27952	1	is an example of	an open set	1	be an example of	an open set	1	0.95993	http://en.wikipedia.org/wiki/Talk:0.999.../Arguments
+27971	1	must be	an integer	1	must be	an integer	1	0.93811	http://en.wikipedia.org/wiki/Magic_hexagon
+28132	1	is scheduled to start in	March 2009	1	be schedule to start in	march 2009	1	0.95093	http://en.wikipedia.org/wiki/Sanmen_Nuclear_Power_Plant
+28146	1	struck	Tampico	1	strike	tampico	1	0.91043	http://en.wikipedia.org/wiki/1921_Atlantic_hurricane_season
+28147	1	win in	2008	1	win in	2008	1	0.95093	http://en.wikipedia.org/wiki/Greg_Bryk
