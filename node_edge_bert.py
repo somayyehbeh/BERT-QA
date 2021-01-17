@@ -161,7 +161,7 @@ class TrainingLoop:
 	def load(self, save_path='./models/node_edge_bert.pt'):
 		self.model = torch.load(save_path)
 
-	def readable_predict(self, device, _input='Where was Bill Gates Born?'):
+	def readable_predict(self, device, _input='Where was Bill Gates Born?', print_result=True):
 		addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
 		wordstoberttokens = lambda string:self.model.tokenizer.tokenize(string)
 		berttokenstoids = lambda tokens:self.model.tokenizer.convert_tokens_to_ids(tokens)
@@ -173,9 +173,13 @@ class TrainingLoop:
 		borders = torch.argmax(_output, dim=2).detach().cpu().numpy()[0]
 		node = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[0]:borders[1]])
 		edge = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[2]:borders[3]])
-		data = [[_input, node, edge]]
-		print(tabulate(data, headers=["Question", "Node", "Edge"]))
-		
+		if print_result:
+			data = [[_input, node, edge]]
+			print(tabulate(data, headers=["Question", "Node", "Edge"]))
+		else:
+			return node, edge
+
+
 
 
 if __name__=='__main__':
@@ -202,5 +206,5 @@ if __name__=='__main__':
 	tl.load()
 	tl.predict(test_dataloader, device)
 	##################################################
-	tl.readable_predict(device)
+	tl.readable_predict(device, print_result=True)
 	
