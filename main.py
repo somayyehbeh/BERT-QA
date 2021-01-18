@@ -1,6 +1,7 @@
 from node_edge_bert import *
 from graph import *
 import pandas as pd
+from utils import get_hit
 
 if __name__=='__main__':
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -14,17 +15,19 @@ if __name__=='__main__':
 	tl.load()
 
 	RKBG = ReverbKnowledgeBaseGraph()
-	print(RKBG.query(node='Lenin', edge='fled to'))
 
-	test_df = pd.read_excel('./test.xlsx')
+	test_df = pd.read_excel('./test.xlsx').sample(n=100)
+	actual = test_df['Reverb_no'].to_list()
 	system_results = []
 	for index, row in tqdm(test_df.iterrows(), total=test_df.shape[0]):
 		node, edge = tl.readable_predict(device, _input=row['Question'], print_result=False)
 		node = ' '.join(node); edge = ' '.join(edge)
 		node = node.replace(' ##', ''); edge = edge.replace(' ##', '')
-		print(f'Node: {node}, Edge:{edge}')
+		print(f'\nNode: {node}, Edge:{edge}')
 		temp = RKBG.query(node=node, edge=edge)
 		print(temp)
+		print(row['Reverb_no'])
 		system_results.append(temp)
+	print(get_hit(actual, system_results))
 
 		

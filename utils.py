@@ -39,7 +39,32 @@ def get_f1(predicts, golden):
 	logging.info("Span accuracy")
 	logging.info(acc)
 
+def get_hit(actual, predict):
+	hit_1, hit_3, hit_5, hit_10, hit_100 = 0, 0, 0, 0, 0
+	for index, item in enumerate(actual):
+		for hit, prd in enumerate(predict[index]):
+			if item==prd[0]:
+				if hit<=0:
+					hit_1+=1; hit_3+=1; hit_5+=1; hit_10+=1; hit_100+=1
+					continue
+				if hit<=3:
+					hit_3+=1; hit_5+=1; hit_10+=1; hit_100+=1
+					continue
+				if hit<=5:
+					hit_5+=1; hit_10+=1; hit_100+=1
+					continue
+				if hit<=10:
+					hit_10+=1; hit_100+=1
+					continue
+				if hit<=100:
+					hit_100+=1
+					continue
+	length = len(actual)
+	hit_1/=length; hit_3/=length; hit_5/=length; hit_10/=length; hit_100/=length
+	return hit_1, hit_3, hit_5, hit_10, hit_100
+				 
 if __name__=='__main__':
 	train, valid, test = read_data()
 	get_f1(valid[1][:, :2], valid[1][:, :2])
 	print(train[0].shape)
+	print(get_hit([1, 2, 3], [[(1, 'test')], [(1, 'test')], [(3, 'test')]]))
