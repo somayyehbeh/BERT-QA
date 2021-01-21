@@ -1,0 +1,318 @@
+Node: hull, Edge:is
+candidates: []
+label machine ID: 160400
+
+ Node: an archeologist, Edge:just got
+candidates: [(26331, 'An archeologist', 90, 'has just got', 90, 'an artifact'), (400920, 'an option', 86, "just was n't", 86, 'Winning')]
+label machine ID: 26331
+
+ Node: the un security council, Edge:is also a permanent member of
+candidates: [(405811, 'the UN Security Council', 90, 'is also a permanent member of', 100, "People 's Republic of China"), (405811, 'the UN Security Council', 90, 'is a permanent member of', 95, 'France')]
+label machine ID: 255100
+
+ Node: almost a minute, Edge:lasted for
+candidates: []
+label machine ID: 268829
+
+ Node: maria, Edge:still
+candidates: []
+label machine ID: 211531
+
+ Node: the ipsec protocol suite, Edge:is a member of
+candidates: [(393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Andrews'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Beckwith'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Berg'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Brown'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Gelman'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Lerman'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Schatz'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Fauci'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Federer'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Koprowski'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Mathews'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Preston'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Professor Schultz'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Rebek'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Sims'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Tien'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Trinkaus'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Vitetta')]
+label machine ID: 16885
+
+ Node: bur oak, Edge:is
+candidates: []
+label machine ID: 59229
+
+ Node: members, Edge:must
+candidates: []
+label machine ID: 219750
+
+ Node: 1954, Edge:began in
+candidates: []
+label machine ID: 261850
+
+ Node: william de warenne, Edge:was the son of
+candidates: [(281347, 'William de Warenne', 90, 'was the son of', 100, 'John'), (136440, 'Richard de Clare', 86, 'was the son of', 100, 'Gilbert de Clare'), (384243, 'William de Braose', 86, 'was the son of', 100, 'William'), (402483, 'William Shakespeare', 86, 'was the son of', 100, 'John Shakespeare'), (190579, 'William Cavendish', 86, 'was the son of', 100, '1590 June 20 , 1628'), (4579, 'William Bruce', 86, 'was the son of', 100, '2nd Baronet'), (384166, 'William Seymour', 86, 'was the son of', 100, '4th Duke of Somerset'), (384000, 'William Gordon', 86, 'was the son of', 100, 'Aberdeen'), (28197, 'William Andrews', 86, 'was the son of', 100, 'Andrews'), (41304, 'William Bass', 86, 'was the son of', 100, 'Bass')]
+label machine ID: 174731
+Node: shakespeare, Edge:is
+candidates: []
+label machine ID: 297850
+Node: narva, Edge:fought in
+candidates: [(404917, 'Narva', 60, 'fought in', 100, 'Belgium')]
+label machine ID: 43500
+Node: british east india company, Edge:seizes
+candidates: [(55951, 'British East India Company', 90, 'seizes', 100, 'Manila')]
+label machine ID: 55950
+Node: marburg, Edge:was professor in
+candidates: [(318807, 'Marburg', 90, 'was professor in', 100, 'Jr.')]
+label machine ID: 178085
+Node: neurospora, Edge:is
+candidates: []
+label machine ID: 237829
+Node: grand isle, Edge:is
+candidates: []
+label machine ID: 140731
+Node: mayfield, Edge:now
+candidates: []
+label machine ID: 216000
+Node: david niven, Edge:plays
+candidates: [(384182, 'David Niven', 90, 'plays', 100, 'Nigel Havers')]
+label machine ID: 240485
+Node: apeldoorn, Edge:is a multi - use stadium in
+candidates: [(160439, 'Apeldoorn', 90, 'is a multi-use stadium in', 96, 'Bos')]
+label machine ID: 52331
+Node: lives, Edge:be made
+candidates: [(62209, '$ 10', 54, 'can be purchased for', 86, 'Cab rides'), (406322, 'date', 54, 'have been made to', 86, 'A number of investments'), (406322, 'date', 54, 'have been made to', 86, 'Hundreds of recordings'), (406322, 'date', 54, 'have been made to', 86, 'Three generations'), (399802, '1', 54, 'be allowed on', 86, 'Wikipedia'), (399802, '1', 54, 'will be released on', 86, 'June 2 , 2009'), (399802, '1', 54, 'made his senior debut for', 86, 'Epstein'), (399802, '1', 54, 'be a normal subgroup of', 86, 'Let N'), (399802, '1', 54, 'could be less than', 86, 'N'), (38937, '0.2', 54, 'can be represented as', 86, '210-1'), (31, '210-1', 54, 'can be represented as', 86, '0.2')]
+label machine ID: 200485
+Node: riverside county, Edge:is a census - designated place in
+candidates: [(387391, 'Riverside County', 90, 'is a census-designated place in', 97, 'Homeland'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '1,228'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '100'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '2,650'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '350'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '4,400'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, '810'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, 'Big Bend'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, 'Fall River Mills'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, 'McArthur'), (381142, 'Shasta County', 86, 'is a census-designated place in', 97, 'Palo Cedro'), (392452, 'Brown County', 86, 'is a census-designated place in', 97, 'Lake Brownwood'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Big Point'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Cullowhee'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Escatawpa'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Helena'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Hurley'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Latimer'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Lolita'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'St . Martin'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Vancleave'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Vanderbilt'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Wade'), (394497, 'Jackson County', 86, 'is a census-designated place in', 97, 'Wanblee'), (390045, 'Cumberland County', 86, 'is a census-designated place in', 97, 'Plainfield'), (390045, 'Cumberland County', 86, 'is a census-designated place in', 97, 'Vander'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Audubon'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Chevy Chase'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Drexel'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Eagleville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Evansburg'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Flourtown'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Forest Glen'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Gilbertsville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Harleysville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Horsham'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Kulpsville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Maple Glen'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Merrimac'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Montgomeryville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Pinehurst'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Plymouth Meeting'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Porter Heights'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Potomac'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Shawsville'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Shiloh'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Skippack'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Spring House'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Spring Mount'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Stowe'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Trooper'), (400578, 'Montgomery County', 86, 'is a census-designated place in', 97, 'Willow Grove'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Cambria'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Lake Nacimiento'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Nipomo'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Oceano'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'San Miguel'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Shandon'), (323194, 'San Luis Obispo County', 86, 'is a census-designated place in', 97, 'Templeton'), (387453, 'Talbot County', 86, 'is a census-designated place in', 97, 'Cordova'), (387453, 'Talbot County', 86, 'is a census-designated place in', 97, 'Tilghman Island'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Oakley'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Auburn'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Bedford'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Etna'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Fairview'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Fontenelle'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Grover'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Lincoln Beach'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Rose Lodge'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Smoot'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Taylor'), (389627, 'Lincoln County', 86, 'is a census-designated place in', 97, 'Westport'), (373330, 'Clayton County', 86, 'is a census-designated place in', 97, 'Bonanza'), (373330, 'Clayton County', 86, 'is a census-designated place in', 97, 'Irondale'), (389129, 'Kent County', 86, 'is a census-designated place in', 97, 'Girard'), (389129, 'Kent County', 86, 'is a census-designated place in', 97, 'Highland Acres'), (389129, 'Kent County', 86, 'is a census-designated place in', 97, 'Riverview'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Altoona'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Arlee'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Astor'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Big Arm'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Charlo'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Clearlake Oaks'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Cobb'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Dayton'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Elmo'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Ferndale'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Finley Point'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Jette'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Kelseyville'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Kerr'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Kicking Horse'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Kings Point'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Lake Catherine'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Lisbon'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Long Lake'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Lower Lake'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Lucerne'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Middletown'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Nice'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Pablo'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Paisley'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Pine Lakes'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Pittman'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Ravalli'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Rocky Point'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Rollins'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Silver Lake'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Turtle Lake'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Upper Lake'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Venetian Village'), (392841, 'Lake County', 86, 'is a census-designated place in', 97, 'Woods Bay'), (327154, 'Geauga County', 86, 'is a census-designated place in', 97, 'Bainbridge'), (327154, 'Geauga County', 86, 'is a census-designated place in', 97, 'Chesterland'), (386642, 'Hancock County', 86, 'is a census-designated place in', 97, 'Diamondhead'), (386642, 'Hancock County', 86, 'is a census-designated place in', 97, 'Kiln'), (386642, 'Hancock County', 86, 'is a census-designated place in', 97, 'Newell'), (386642, 'Hancock County', 86, 'is a census-designated place in', 97, 'Pearlington'), (386642, 'Hancock County', 86, 'is a census-designated place in', 97, 'Shoreline Park')]
+label machine ID: 109829
+Node: 1984, Edge:was introduced in
+candidates: [(402554, '1984', 60, 'was introduced in', 100, 'G.721'), (402554, '1984', 60, 'was introduced in', 100, 'Science stream'), (402554, '1984', 60, 'was introduced in', 100, 'Speedway'), (402554, '1984', 60, 'was introduced in', 100, 'The CH 601'), (402554, '1984', 60, 'was introduced in', 100, 'The Macintosh')]
+label machine ID: 328750
+Node: gore, Edge:is
+candidates: [(406705, 'the United States Congress', 45, 'is a bill in', 90, '1')]
+label machine ID: 139600
+Node: the treaty, Edge:was
+candidates: [(366496, 'the Sea of Japan', 86, 'was diverted to', 90, '1')]
+label machine ID: 350650
+Node: marvel comics, Edge:is a fictional character in
+candidates: [(392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Astra'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Batwing'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Betty Ross'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Bolivar Trask'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Bounty'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Chord'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Coldfire'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Deathurge'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Effigy'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Free Spirit'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Ghost Rider'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Glorian'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Hepzibah'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Isaiah Bradley'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Joystick'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Larry Trask'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Lockheed'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Masque'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Maxam'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Merlyn'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Stature'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Tai'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'The Ancient One'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'The Black Panther'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'The Goddess'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'The Grandmaster'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'Whiteout'), (392951, 'the Marvel Comics universe', 90, 'is a fictional character in', 100, 'X-23'), (356531, 'Marvel Comics', 90, 'is a fictional character in', 100, "Death 's Head"), (356531, 'Marvel Comics', 90, 'is a fictional character in', 100, 'Ravage'), (356531, 'Marvel Comics', 90, 'is a fictional character in', 100, 'Saul'), (356531, 'Marvel Comics', 90, 'is a fictional character in', 100, 'Tigra'), (391942, 'the Marvel Comics Universe', 90, 'is a fictional character in', 100, 'Sushi'), (371888, "Marvel Comics ' Marvel Universe", 90, 'is a fictional character in', 100, 'Vienna'), (383385, 'DC Comics', 86, 'is a fictional character in', 100, 'Thorn'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Paris'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Gaza'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Agron'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Nimrod'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Artemis'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Blockbuster'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Achelous'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Administrator'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Agamemnon'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Albino'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Alcmena'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Amalgam'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Analyzer'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Andromeda'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Animus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Apollo'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Aquarius'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Armory'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Asmodeus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Atalanta'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Autolycus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Balor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Baron Samedi'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Behemoth'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Blitzkrieg'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Brain Drain'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Brainchild'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Bres'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Bulldozer'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Caber'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Cancer'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Capricorn'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Cerberus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Chaka'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Cheetah'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Cloud'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Comet'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Condor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Cowboy'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Defensor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Delphi'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Diamondhead'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Dionysus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Doughboy'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Earthquake'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Electron'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Enforcer'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Fantasia'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Flashfire'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Futurist'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Gatecrasher'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Gazelle'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Geiger'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Gemini'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Ghost Girl'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Glamor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Grappler'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Grotesk'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hardcore'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hecate'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hephaestus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hermes'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hildegarde'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hitman'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hobgoblin'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Honcho'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Hussar'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'ISAAC'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Iguana'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Illusion'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Immortus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Inferno'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Iron Cross'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Kala'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Knickknack'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Kukulcan'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Leir'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Leo'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Live Wire'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Locksmith'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Madcap'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Magique'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Manslaughter'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Manta'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Mastodon'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Maur-Konn'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Max'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Mayhem'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Mentor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Metal Master'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Mimir'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Misfit'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Missing Link'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Montana'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Morpheus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Mother Night'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Nebulon'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Nebulos'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Nightside'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Omega'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Oracle'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Perseus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Piper'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Piranha'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Pisces'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Plasma'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Prime Mover'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Proctor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Prometheus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Protector'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Pulsar'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Rajah'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Ramrod'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Rancor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Rapier'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Ringleader'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Rintrah'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'SULTAN'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Sagittarius'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Saturnine'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Scintilla'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Shamrock'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Shatterstar'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Shellshock'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Shotgun'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Sikorsky'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Sleeper'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Smasher'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Snowfall'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Spellbinder'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Sputnik'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Spyder'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Starlight'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Talisman'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Taurus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Tempus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Tenpin'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Clown'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Dreamqueen'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Eliminator'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Fenris Wolf'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Finisher'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Magus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Nameless One'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'The Seeker'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Thermo'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Tiboro'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Titania'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Trance'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Trick Shot'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Trump'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Tumbler'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Tundra'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Typhon'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Ultimus'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Urthona'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Valinor'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Vamp'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Veritas'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Vesta'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Warhawk'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Whiplash'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'White Tiger'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Widget'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Wolf Cub'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Wong'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Worm'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Zabu'), (402638, 'the Marvel Universe', 86, 'is a fictional character in', 100, 'Zarek'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Marco'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Alpha'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Anomaly'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Azrael'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Battalion'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Crispus Allen'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Dava'), (371413, 'the DC Comics universe', 86, 'is a fictional character in', 100, 'Fastback'), (391475, 'Image Comics', 86, 'is a fictional character in', 100, 'God')]
+label machine ID: 356531
+Node: queensland, Edge:is in
+candidates: []
+label machine ID: 63000
+Node: germany, Edge:was then expelled from
+candidates: [(407000, 'Germany', 90, 'was then expelled from', 100, 'Kempner'), (407000, 'Germany', 90, 'was expelled from', 95, 'Mies van der Rohe')]
+label machine ID: 182931
+Node: japan, Edge:have been recorded from
+candidates: [(407056, 'Japan', 60, 'have been recorded from', 100, 'Ten species'), (407056, 'Japan', 60, 'have been recorded in', 87, '619 bird species'), (407056, 'Japan', 60, 'have sold in', 86, '7 volumes'), (407056, 'Japan', 60, 'moved from', 86, 'Construction'), (407056, 'Japan', 60, 'were from', 86, 'Forty percent of them'), (407056, 'Japan', 60, 'withdraws from', 86, 'the Washington Naval Treaty'), (407056, 'Japan', 60, 'withdraws from', 86, 'international politics'), (407056, 'Japan', 60, 'rejected from', 86, 'Lightning Bolt'), (407056, 'Japan', 60, 'is from', 86, 'Osaka'), (407056, 'Japan', 60, 'have come from', 86, 'Participants'), (407056, 'Japan', 60, 'came also from', 86, 'Revolutionary ideas'), (407056, 'Japan', 60, 'have included', 86, 'Tour destinations'), (407056, 'Japan', 60, 'is coming from', 86, 'a lot'), (407056, 'Japan', 60, 'have gone to', 86, 'tens of thousands')]
+label machine ID: 323285
+Node: edmonton, Edge:relocated to
+candidates: [(402173, 'Edmonton', 90, 'relocated to', 100, 'David'), (334006, 'The Edmonton Oil Kings', 90, 'relocated to', 100, 'Portland')]
+label machine ID: 93900
+Node: episode g, Edge:is the main antagonist of
+candidates: [(88531, 'Episode G', 90, 'is the main antagonist of', 100, 'Cronus')]
+label machine ID: 88531
+Node: various organizations, Edge:has sat on
+candidates: [(388696, 'various organizations', 86, 'has sat on', 100, 'The Archbishop')]
+label machine ID: 326229
+Node: the tecumsehs, Edge:off
+candidates: [(389780, 'the World', 86, 'have offices throughout', 90, 'Coutts')]
+label machine ID: 350050
+Node: crossfire, Edge:has also appeared regularly on
+candidates: [(373131, 'Crossfire', 90, 'has also appeared regularly on', 100, 'Vlahos')]
+label machine ID: 373131
+Node: francis bellamy, Edge:is related to
+candidates: [(43800, 'Francis Bellamy', 90, 'is related to', 100, 'Bellamy'), (43811, 'Bellamy', 86, 'is related to', 100, 'Francis Bellamy')]
+label machine ID: 43800
+Node: jake, Edge:plays the role of
+candidates: [(280296, 'Jake', 60, 'plays the role of', 100, 'Chris Pine'), (354160, 'Blake', 45, 'plays the leading role of', 95, 'Michael')]
+label machine ID: 74285
+Node: the jesus army, Edge:is the birthplace of
+candidates: [(58685, 'the Jesus Army', 90, 'is also the birthplace of', 95, 'Bugbrooke'), (389780, 'the World', 86, 'End of', 86, '1'), (406705, 'the United States Congress', 86, 'is a bill in', 86, '1')]
+label machine ID: 58685
+Node: joseph bryan, Edge:was
+candidates: [(376712, 'Bryan', 86, 'was born in', 90, 'Kent')]
+label machine ID: 177629
+Node: tucson, Edge:grew up in
+candidates: []
+label machine ID: 306600
+Node: talent, Edge:is
+candidates: []
+label machine ID: 320650
+Node: mainland portugal, Edge:was spreading in
+candidates: [(100485, 'mainland Portugal', 90, 'was spreading in', 100, 'Discontent'), (101905, 'Portogallo', 58, 'di', 90, 'Don Pedro')]
+label machine ID: 100485
+Node: abda, Edge:is
+candidates: []
+label machine ID: 17731
+Node: burke ' s, Edge:is
+candidates: []
+label machine ID: 59485
+Node: simcity 3000, Edge:was bundled with
+candidates: [(301507, 'SimCity 3000', 90, 'was bundled with', 100, 'A trailer')]
+label machine ID: 15829
+Node: shaivism, Edge:is
+candidates: []
+label machine ID: 297829
+Node: onondaga county, Edge:was
+candidates: []
+label machine ID: 244950
+Node: prague, Edge:was born in
+candidates: []
+label machine ID: 147429
+Node: october 21 , 1972, Edge:was authorized on
+candidates: [(342700, 'October 21 , 1972', 90, 'was authorized on', 100, 'The National Memorial')]
+label machine ID: 342700
+Node: september 23 , 2008, Edge:were held on
+candidates: [(332351, 'September 23 , 2008', 90, 'were held on', 100, 'Internal elections'), (327165, 'March 11 , 2008', 86, 'were held on', 100, 'Services')]
+label machine ID: 166200
+Node: twa, Edge:has been a hub for
+candidates: []
+label machine ID: 189531
+Node: chopra, Edge:was
+candidates: []
+label machine ID: 74029
+Node: the nebraska school activities association, Edge:is a member of
+candidates: [(310429, 'the Nebraska School Activities Association', 90, 'is a member of', 100, 'Aquinas'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Andrews'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Beckwith'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Berg'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Brown'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Gelman'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Lerman'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Dr. Schatz'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Fauci'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Federer'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Koprowski'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Mathews'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Preston'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Professor Schultz'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Rebek'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Sims'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Tien'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Trinkaus'), (393174, 'the National Academy of Sciences', 86, 'is a member of', 100, 'Vitetta'), (405873, 'the International Criminal Court', 86, 'is a member of', 100, 'Costa Rica'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Berger'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Chandy'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Dr. Oppenheim'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Fraser'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Gast'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Ron Rivest'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Ross'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Roy'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Rumsey'), (389079, 'the National Academy of Engineering', 86, 'is a member of', 100, 'Wolf'), (233757, 'the New Jersey State Interscholastic Athletic Association', 86, 'is a member of', 100, 'Immaculate Conception High School'), (233757, 'the New Jersey State Interscholastic Athletic Association', 86, 'is a member of', 100, 'NBHS')]
+label machine ID: 287331
+Node: albert, Edge:was
+candidates: []
+label machine ID: 22500
+Node: india, Edge:is
+candidates: []
+label machine ID: 164550
+Node: mother, Edge:was
+candidates: [(229895, 'Mother', 90, 'was successful in', 90, 'Japan')]
+label machine ID: 229885
+Node: mbe, Edge:was
+candidates: []
+label machine ID: 205650
+Node: best writing, Edge:won an academy award for
+candidates: [(387768, 'Best Writing', 90, 'won an Academy Award for', 100, 'The Producers'), (387768, 'Best Writing', 90, 'won an Academy Award for', 100, 'Woman of the Year'), (387768, 'Best Writing', 90, 'won the Academy Award for', 90, 'Italian Style'), (369393, 'Best Supporting Actor', 86, 'Won an Academy Award for', 100, '2005'), (369393, 'Best Supporting Actor', 86, 'won an Academy Award for', 100, 'Van Heflin'), (369393, 'Best Supporting Actor', 86, 'won the Academy Award for', 90, 'Chris Cooper'), (369393, 'Best Supporting Actor', 86, 'won the Academy Award for', 90, 'James Coburn'), (369393, 'Best Supporting Actor', 86, 'won the Academy Award for', 90, 'Ledger'), (369393, 'Best Supporting Actor', 86, 'won the Academy Award for', 90, "O'Brien"), (349420, 'Best Picture', 86, 'won Academy Awards for', 91, 'Rain Man'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Chicago'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'A Beautiful Mind'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Amadeus'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'American Beauty'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Braveheart'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Cavalcade'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Cimarron'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Crash'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Five of the films'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Forrest Gump'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Gladiator'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Kramer vs. Kramer'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Lawrence of Arabia'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Midnight Cowboy'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Million Dollar Baby'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Oliver !'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Ordinary People'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Patton'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Platoon'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Rain Man'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'Rocky'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, "Schindler 's List"), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'The Godfather'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'The Godfather Part II'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'The Sound of Music'), (349420, 'Best Picture', 86, 'won the Academy Award for', 90, 'The Sting'), (349420, 'Best Picture', 86, 'have won the Academy Award for', 88, '80 films'), (349420, 'Best Picture', 86, 'won the Academy Awards for', 88, 'The Godfather'), (324673, 'Best Music', 86, 'won an Academy Award for', 100, 'Alfred Newman'), (324673, 'Best Music', 86, 'won an Academy Award for', 100, 'Isaac Hayes'), (164223, 'Best Song', 86, 'won the Academy Award for', 90, 'Inc.'), (375283, 'Best Actress', 86, 'won an Academy Award for', 100, 'Julie Andrews'), (375283, 'Best Actress', 86, 'won the Academy Award for', 90, 'Glenda Jackson'), (375283, 'Best Actress', 86, 'won the Academy Award for', 90, 'Paltrow'), (375283, 'Best Actress', 86, 'won the Academy Award for', 90, "Sophie 's Choice"), (375283, 'Best Actress', 86, 'won the Academy Award for', 90, 'Streisand'), (223007, 'Best Visual Effects', 86, 'won the Academy Award for', 90, 'Mighty Joe Young'), (299967, 'Best Supporting Actress', 86, 'won the Academy Award for', 90, 'Astor'), (299967, 'Best Supporting Actress', 86, 'won the Academy Award for', 90, 'Baxter'), (299967, 'Best Supporting Actress', 86, 'won the Academy Award for', 90, 'Brady'), (299967, 'Best Supporting Actress', 86, 'won the Academy Award for', 90, 'Heckart'), (299967, 'Best Supporting Actress', 86, 'won the Academy Award for', 90, 'Juliette Binoche'), (323629, 'Best picture', 86, 'won the academy award for', 90, 'Terms of Endearment'), (357284, 'Best Director', 86, 'won an Academy Award for', 100, 'Jonathan Demme'), (357284, 'Best Director', 86, 'won the Academy Award for', 90, 'Bertolucci'), (357284, 'Best Director', 86, 'won the Academy Award for', 90, 'Mike Nichols'), (329245, 'Best Cinematography', 86, 'won the Academy Award for', 90, 'Sven Nykvist'), (313140, 'Best Actor', 86, 'won an Academy Award for', 100, 'Guinness'), (313140, 'Best Actor', 86, 'won the Academy Award for', 90, 'Cooper'), (313140, 'Best Actor', 86, 'won the Academy Award for', 90, 'Denzel Washington'), (313140, 'Best Actor', 86, 'won the Academy Award for', 90, 'Geoffrey Rush'), (313140, 'Best Actor', 86, 'won the Academy Award for', 90, 'Olivier'), (313140, 'Best Actor', 86, 'won the Academy Award for', 90, 'Shine')]
+label machine ID: 386931
+Node: seemore, Edge:is
+candidates: []
+label machine ID: 286429
+Node: belgrave, Edge:is
+candidates: []
+label machine ID: 43531
+Node: publishers weekly, Edge:has written book reviews for
+candidates: [(267821, 'Publishers Weekly', 86, 'has written book reviews for', 100, 'Hall'), (267821, 'Publishers Weekly', 86, 'reviews', 90, 'Rollback'), (267821, 'Publishers Weekly', 86, 'reviews', 90, 'Wake')]
+label machine ID: 146629
+Node: tommy vercetti, Edge:is
+candidates: []
+label machine ID: 358400
+Node: the ottawa hospital, Edge:is the research arm of
+candidates: [(344000, 'The Ottawa Hospital', 90, 'is the research arm of', 100, 'The Ottawa Health Research Institute'), (33, 'the SI unit', 86, 'is not', 86, '0.25-0.5 km'), (389780, 'the World', 86, 'End of', 86, '1'), (406705, 'the United States Congress', 86, 'is a bill in', 86, '1')]
+label machine ID: 344000
+Node: posen, Edge:was born at
+candidates: [(391832, 'Rose', 54, 'was born at', 100, 'Windsor'), (50718, 'Boden', 54, 'was born at', 100, 'Sherborne')]
+label machine ID: 135400
+Node: gaelic football, Edge:is
+candidates: []
+label machine ID: 131531
+Node: anton chekhov, Edge:was
+candidates: []
+label machine ID: 29800
+Node: gassaway, Edge:moved
+candidates: []
+label machine ID: 133500
+Node: power output, Edge:up
+candidates: []
+label machine ID: 263600
+Node: france, Edge:an embassy
+candidates: [(405328, 'France', 90, 'has an embassy in', 90, 'Belgrade'), (405328, 'France', 90, 'has an embassy in', 90, 'Budapest'), (405328, 'France', 90, 'has an embassy in', 90, 'Prague'), (405328, 'France', 90, 'has an embassy in', 90, 'Bratislava'), (405328, 'France', 90, 'has an embassy in', 90, 'Kuala Lumpur'), (405328, 'France', 90, 'has an embassy in', 90, 'Pristina'), (405328, 'France', 90, 'has an embassy in', 90, 'Minsk'), (405328, 'France', 90, 'has an embassy in', 90, 'Ljubljana'), (405328, 'France', 90, 'has an embassy in', 90, 'Podgorica'), (405328, 'France', 90, 'has an embassy in', 90, 'Zagreb.'), (405328, 'France', 90, 'has an embassy in', 90, 'Riga'), (405328, 'France', 90, 'has an embassy in', 90, 'Baku'), (405328, 'France', 90, 'has an embassy in', 90, 'Bucharest'), (405328, 'France', 90, 'has an embassy in', 90, 'Vilnius'), (405328, 'France', 90, 'has an embassy in', 90, 'Dublin'), (405328, 'France', 90, 'has an embassy in', 90, 'Tallinn'), (405328, 'France', 90, 'has an embassy in', 90, 'Reykjavik'), (405328, 'France', 90, 'opened an Embassy in', 90, 'Chisinau')]
+label machine ID: 127400
+Node: warner, Edge:being groomed
+candidates: [(376642, 'Warner', 90, 'is being groomed for', 90, 'the Senate')]
+label machine ID: 376629
+Node: sam, Edge:up
+candidates: []
+label machine ID: 288829
+Node: the bulldog, Edge:spent some time
+candidates: [(328450, 'The Bulldog', 90, 'spent some time in', 95, 'the United States')]
+label machine ID: 328450
+Node: fairfax, Edge:is
+candidates: []
+label machine ID: 118200
+Node: the lakers, Edge:were no match for
+candidates: [(403815, 'the Lakers', 90, 'were no match for', 100, 'The Suns'), (403815, 'the Lakers', 90, 'were no match for', 100, 'the Pistons'), (44, '0.8 % of the students', 86, 'were of', 86, 'Asian descent'), (390728, 'The Beatles', 86, 'were in', 86, 'France'), (390728, 'The Beatles', 86, 'is up for', 86, 'a featured article review'), (390728, 'The Beatles', 86, 'argued for', 86, 'a smaller percentage'), (406705, 'the United States Congress', 86, 'announced his candidacy for', 86, 'Sweetland'), (406798, 'the Netherlands', 86, 'cheered for', 86, 'Fans'), (406798, 'the Netherlands', 86, 'were a gothic metal band from', 86, 'Orphanage')]
+label machine ID: 349629
+Node: encyclopedias, Edge:are a part of
+candidates: [(382818, 'an encyclopedia', 83, 'are part of', 95, 'Articles'), (376907, 'encyclopedias', 83, 'are a part of', 100, 'Images'), (163647, 'the Wikipedia encyclopedia', 83, 'are a part of', 100, 'Images')]
+label machine ID: 163650
+Node: nhk ., Edge:is the mascot of
+candidates: [(101829, 'NHK.', 60, 'is the mascot of', 100, 'Domo'), (233957, 'NHK', 60, 'is the mascot for', 91, 'Domo-kun')]
+label machine ID: 101829
+Node: provenzano, Edge:is
+candidates: []
+label machine ID: 267331
+Node: cpe, Edge:generally
+candidates: []
+label machine ID: 87200
+Node: watsons, Edge:go
+candidates: [(352931, 'The Watsons', 90, 'go to', 90, 'Birmingham')]
+label machine ID: 352931
+Node: prairie view, Edge:is
+candidates: []
+label machine ID: 263829
+Node: rossdale, Edge:was
+candidates: []
+label machine ID: 283200
+Node: hazel run, Edge:is
+candidates: []
+label machine ID: 151085
+Node: the houston astros ' 1978 season, Edge:was
+candidates: [(366496, 'the Sea of Japan', 86, 'was diverted to', 90, '1')]
+label machine ID: 337800
+Node: 1995 season, Edge:was built for
+candidates: [(124050, '1995 season', 90, 'was built for', 100, 'Flight Deck')]
+label machine ID: 124050
+Node: ottawa, Edge:were presented in
+candidates: [(401365, 'Ottawa', 90, 'were presented in', 100, 'The Juno Awards of 2003')]
+label machine ID: 339229
+Node: mar vista, Edge:is
+candidates: []
+label machine ID: 210885
+Node: little women, Edge:is
+candidates: []
+label machine ID: 200200
+Node: , Edge:a board member of
+WARNING:root:Applied processor reduces input query to empty string, all comparisons will have score 0. candidates: [Query: '']
+candidates: [(407056, 'Japan', 0, 'was also an old province of', 86, 'Bizen'), (407056, 'Japan', 0, 'is a private university in', 86, 'Bunkyo University'), (407056, 'Japan', 0, 'is a political division of', 86, 'D'), (407056, 'Japan', 0, 'are a relatively new phenomenon in', 86, 'Freeters'), (407056, 'Japan', 0, 'is a common family name in', 86, 'Fujita'), (407056, 'Japan', 0, 'are a very popular dish in', 86, 'Gyoza'), (407056, 'Japan', 0, 'is a multinational corporation headquartered in', 86, 'HMC'), (407056, 'Japan', 0, 'is a very popular character in', 86, 'Iroha'), (407056, 'Japan', 0, 'established a military base on', 86, 'Manus'), (407056, 'Japan', 0, 'held a mayoral election on', 86, 'December 10 , 2006'), (407056, 'Japan', 0, "is the world 's largest importer of", 86, 'dairy products'), (407056, 'Japan', 0, 'held a mayoral election on', 86, 'April 27 , 2003'), (407056, 'Japan', 0, 'produces a great variety of', 86, 'products'), (407056, 'Japan', 0, 'has a relatively small number of', 86, 'radio stations'), (407056, 'Japan', 0, 'remained a major source of', 86, 'development funds'), (407056, 'Japan', 0, 'was also an early adopter of', 86, 'American football'), (407056, 'Japan', 0, 'recognized the independence of', 86, 'Manchukuo'), (407056, 'Japan', 0, 'held a mayoral election on', 86, 'July 2 , 2006'), (407056, 'Japan', 0, 'assumed administrative control of', 86, 'Korea'), (407056, 'Japan', 0, 'has also been a pioneer in', 86, 'bioplastics'), (407056, 'Japan', 0, "was the world 's biggest producer of", 86, 'child pornography'), (407056, 'Japan', 0, 'is the leading producer of', 86, 'tamari'), (407056, 'Japan', 0, 'is a private university in', 86, 'Amagasaki'), (407056, 'Japan', 0, 'has an impressive number of', 86, 'subway systems'), (407056, 'Japan', 0, 'becomes the new capital of', 86, 'Kyoto'), (407056, 'Japan', 0, 'was never released outside of', 86, 'Little Princess'), (407056, 'Japan', 0, 'is a widespread phenomenon in', 86, 'Lolicon'), (407056, 'Japan', 0, 'have developed a cult following in', 86, 'Mustangs'), (407056, 'Japan', 0, 'is a national university in', 86, 'Okayama University'), (407056, 'Japan', 0, 'became the economic center of', 86, 'Osaka'), (407056, 'Japan', 0, 'is a heavy metal band from', 86, 'Sadie'), (407056, 'Japan', 0, 'is the indigenous religion of', 86, 'Shinto'), (407056, 'Japan', 0, 'has been called the religion of', 86, 'Shinto'), (407056, 'Japan', 0, 'are a relatively recent phenomenon in', 86, 'Skyscrapers'), (407056, 'Japan', 0, 'is the current Prime Minister of', 86, 'Taro Aso'), (407056, 'Japan', 0, 'was never released outside of', 86, 'The Saturn version'), (407056, 'Japan', 0, 'is the de facto capital of', 86, 'Tokyo'), (407056, 'Japan', 0, 'is a multinational corporation headquartered in', 86, 'Toyota Motor Corporation'), (407056, 'Japan', 0, 'has had a strong presence in', 86, 'jazz'), (406322, 'date', 0, 'are out of', 86, 'Censorship laws'), (399802, '1', 0, 'End of', 86, 'the World'), (399802, '1', 0, 'consists of', 86, 'A move'), (399802, '1', 0, 'has stressed the importance of', 86, 'Wright')]
+label machine ID: 105600
+Node: sola, Edge:previously worked
+candidates: []
+label machine ID: 306100
+Node: john quincy adams, Edge:elected president
+candidates: [(175532, 'John Quincy Adams', 90, 'was elected President on', 95, 'February 9 , 1825'), (357729, 'John Adams', 86, 'was elected President in', 95, '1796'), (357729, 'John Adams', 86, 'was the second president of', 86, 'the United States'), (357729, 'John Adams', 86, 'was elected', 86, 'Vice President'), (397605, 'Adams', 86, 'was elected president of', 95, 'the American Historical Association')]
+label machine ID: 175531
+Node: madagascar, Edge:also
+candidates: []
+label machine ID: 207229
+Node: kapfenberg, Edge:is
+candidates: []
+label machine ID: 180885
+Node: pittsburgh, Edge:was born in
+candidates: []
+label machine ID: 215829
+Node: lighting, Edge:is needed for
+candidates: [(316761, 'lighting', 90, 'is needed for', 100, 'Power')]
+label machine ID: 263531
+Node: petra, Edge:was
+candidates: []
+label machine ID: 256731
+Node: khattiya, Edge:news
+candidates: [(184429, 'Khattiya', 90, 'made news on', 90, 'October 18 , 2008')]
+label machine ID: 184429
+Node: network taps, Edge:commonly used
+candidates: []
+label machine ID: 237731
+Node: ross, Edge:has great affection for
+candidates: []
+label machine ID: 194600
+Node: fellsmere, Edge:is a historic church in
+candidates: [(335229, 'Fellsmere', 90, 'is a historic church in', 100, 'The First Methodist Episcopal Church')]
+label machine ID: 335229
+Node: the u . s . state of wisconsin, Edge:is in
+candidates: []
+label machine ID: 210200
+Node: interiors, Edge:were
+candidates: []
+label machine ID: 166085
+Node: liukin, Edge:is
+candidates: []
+label machine ID: 200331
+
+
+
+hit@1 = 0.14
+hit@3 = 0.14 
+hit@5 = 0.14
+hit@10 = 0.14
+hit@100 = 0.18

@@ -2,6 +2,8 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import os
 import logging
+from sklearn.metrics.pairwise import cosine_similarity
+
 logging.basicConfig(level=logging.DEBUG)
 
 def read_data(path='./bertified/'):
@@ -38,6 +40,18 @@ def get_f1(predicts, golden):
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	logging.info("Span accuracy")
 	logging.info(acc)
+
+def get_tf_idf_query_similarity(vectorizer, docs_tfidf, query):
+    """
+    vectorizer: TfIdfVectorizer model
+    docs_tfidf: tfidf vectors for all docs
+    query: query doc
+
+    return: cosine similarity between query and all docs
+    """
+    query_tfidf = vectorizer.transform([query])
+    cosineSimilarities = cosine_similarity(query_tfidf, docs_tfidf).flatten()
+    return cosineSimilarities
 
 def get_hit(actual, predict):
 	hit_1, hit_3, hit_5, hit_10, hit_100 = 0, 0, 0, 0, 0
