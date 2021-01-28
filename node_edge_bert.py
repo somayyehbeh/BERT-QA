@@ -3,7 +3,7 @@ from transformers import AdamW
 import torch
 from torch.nn.functional import nll_loss
 from torch.utils.data import Dataset, DataLoader
-from utils import read_data, get_f1
+from utils import read_data, nodes_get_f1, edges_get_f1
 from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
@@ -149,24 +149,32 @@ class TrainingLoop:
 				X, _ = batch
 				X = X.to(device)
 				logits = self.model(X)
-				borders = torch.argmax(logits, dim=2).cpu().detach().numpy().tolist()
-				[predicts.append(item) for item in borders]
-		predicts = np.array(predicts)
+				nodes_borders = torch.argmax(logits[:, :2], dim=2).cpu().detach().numpy().tolist()
+				edges_spans = np.where(logits[:, 2].cpu().detach().numpy() > 0.5, 1, 0)
+				
+				[predicts.append((node_borders, edge_spans)) for node_borders, edge_spans in zip(nodes_borders, edges_spans)]
 		self.predicts = predicts
 		if evaluate:
-			goldens = []
+			node_goldens = []
 			for batch in dataloader:
 				_, y = batch
-				borders = y.cpu().detach().numpy().tolist()
-				[goldens.append(item) for item in borders]
-			goldens = np.array(goldens)
-			gold_nodes_border = goldens[:, :2]
-			gold_edges_border = goldens[:, 2:]
-			pred_nodes_border = self.predicts[:, :2]
-			pred_edges_border = self.predicts[:, 2:]
-			get_f1(pred_nodes_border, gold_nodes_border)
-			print('')
-			get_f1(pred_edges_border, gold_edges_border)
+				nodes_borders = y[:, :2].cpu().detach().numpy().tolist()
+				[node_goldens.append(item) for item in nodes_borders]
+			gold_nodes_border = np.array(node_goldens)
+			pred_nodes_border = np.array([item[0] for item in self.predicts])
+			nodes_get_f1(pred_nodes_border, gold_nodes_border)
+			
+			edge_goldens = []
+			for batch in dataloader:
+				_, y = batch
+				edges_spans = y[:, 2:].cpu().detach().numpy().tolist()
+				[edge_goldens.append(item) for item in edges_spans]
+			gold_edges_span = np.array(edge_goldens)
+			pred_edges_span = [item[1].tolist()+[0 for _ in range(35-len(item[1]))] for item in self.predicts]
+			pred_edges_span = np.asarray(pred_edges_span)
+			# print(gold_edges_span.shape, pred_edges_span.shape)
+			edges_get_f1(pred_edges_span, gold_edges_span)
+
 	
 	def save(self, save_path='./models/node_edge_bert.pt'):
 		torch.save(self.model, save_path)
@@ -182,10 +190,12 @@ class TrainingLoop:
 		input_tensors = torch.tensor([input_token_ids]).long()
 		input_tensors = input_tensors.to(device)
 		with torch.no_grad():
-			_output = self.model(input_tensors)
-		borders = torch.argmax(_output, dim=2).detach().cpu().numpy()[0]
-		node = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[0]:borders[1]])
-		edge = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[borders[2]:borders[3]])
+			logits = self.model(input_tensors)
+		nodes_borders = torch.argmax(logits[:, :2], dim=2).cpu().detach().numpy().tolist()
+		edges_spans = np.where(logits[:, 2].cpu().detach().numpy() > 0.5, 1, 0)
+
+		node = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[nodes_borders[0][0]:nodes_borders[0][1]])
+		edge = self.model.tokenizer.convert_ids_to_tokens(np.array(input_token_ids)[edges_spans[0]==1])
 		if print_result:
 			data = [[_input, node, edge]]
 			print(tabulate(data, headers=["Question", "Node", "Edge"]))
@@ -205,11 +215,11 @@ if __name__=='__main__':
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
 	
 	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=4, shuffle=True, pin_memory=True)
+	train_dataloader = DataLoader(dataset=train_dataset, batch_size=400, shuffle=True, pin_memory=True)
 	valid_dataset = BordersDataset(valid)
 	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=400, shuffle=False, pin_memory=True)
 	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=2, shuffle=False, pin_memory=True)
+	test_dataloader = DataLoader(dataset=test_dataset, batch_size=200, shuffle=False, pin_memory=True)
 	
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss

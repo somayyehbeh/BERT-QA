@@ -15,7 +15,7 @@ def read_data(path='./bertified/'):
 	X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.15, random_state=42)
 	return (X_train, y_train), (X_valid, y_valid), (X_test, y_test)		
 
-def get_f1(predicts, golden):
+def nodes_get_f1(predicts, golden):
 	gold_start, gold_end = golden[:, 0], golden[:, 1]
 	pred_start, pred_end = predicts[:, 0], predicts[:, 1]
 	overlap_start = np.maximum(pred_start, gold_start)
@@ -40,6 +40,29 @@ def get_f1(predicts, golden):
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	logging.info("Span accuracy")
 	logging.info(acc)
+
+def edges_get_f1(predicts, golden):
+	rows, columns = golden.shape
+	preds, actual, common, acc = 0, 0, 0, 0
+	for question in range(rows):
+		if np.array_equal(predicts[question], golden[question]):
+			acc+=1
+		for token in range(columns):
+			if predicts[question, token]==1:
+				preds+=1
+			if golden[question, token]==1:
+				actual+=1
+			if golden[question, token]==1:
+				if predicts[question, token]==1:
+					common+=1
+	precision = common/preds
+	recall = common/actual
+	f1 = 2 * recall * precision / (recall + precision)
+	logging.info("Averaged F1, precision and recall:")
+	logging.info(', '.join([str(item) for item in [f1, precision, recall]]))
+	logging.info("Span accuracy")
+	logging.info(acc/rows)
+
 
 def get_tf_idf_query_similarity(vectorizer, docs_tfidf, query):
     """
