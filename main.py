@@ -22,20 +22,12 @@ if __name__=='__main__':
 	for index, row in tqdm(test_df.iterrows(), total=test_df.shape[0]):
 		node, edge = tl.readable_predict(device, _input=row['Question'], print_result=False)
 		node = ' '.join(node); edge = ' '.join(edge)
-		node = node.replace(' ##', '')#; edge = edge.replace(' ##', '')
-		print(row['Question'].lower().split(), node.lower().split())
-		edge = [item for item in row['Question'].lower().split() if item not in node.lower().split()]
-		wh = ['what', 'which', 'where', 'when', 'why', 'who', 'how']
-		for item in wh:
-			try:
-				edge.remove(item)
-			except:
-				pass
-		edge = ' '.join(edge)
-		print(f'\nNode: {node}, Edge:{edge}')
+		node = node.replace(' ##', ''); edge = edge.replace(' ##', '')
+		print("The Question: ", row['Question'].lower().split())
+		print(f'Node: {node}, Edge: {edge}')
 		temp = RKBG.tfidf_query(node=node, edge=edge)
-		print(temp[:min(len(temp), 25)])
-		print(row['Reverb_no'])
+		print('Sorted candidates: ', temp[:min(len(temp), 25)])
+		print('Actual line number: ', row['Reverb_no'])
 		system_results.append(temp)
 	print(get_hit(actual, system_results))
 

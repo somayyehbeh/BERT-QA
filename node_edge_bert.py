@@ -215,11 +215,11 @@ if __name__=='__main__':
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
 	
 	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=400, shuffle=True, pin_memory=True)
+	train_dataloader = DataLoader(dataset=train_dataset, batch_size=200, shuffle=True, pin_memory=True)
 	valid_dataset = BordersDataset(valid)
-	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=400, shuffle=False, pin_memory=True)
+	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=200, shuffle=False, pin_memory=True)
 	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=200, shuffle=False, pin_memory=True)
+	test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
 	
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss
@@ -230,4 +230,3 @@ if __name__=='__main__':
 	tl.predict(test_dataloader, device)
 	##################################################
 	tl.readable_predict(device, print_result=True)
-	
