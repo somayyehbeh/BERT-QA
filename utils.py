@@ -9,8 +9,8 @@ logging.basicConfig(level=logging.DEBUG)
 def read_data(path='./bertified/'):
 	tokens_matrix = np.load(os.path.join(path, 'tokenmat.npy'))
 	nods_borders = np.load(os.path.join(path, 'entities.npy'))
-	edgs_borders = np.load(os.path.join(path, 'relations.npy'))
-	borders = np.concatenate((nods_borders, edgs_borders), axis=1)
+	edgs_spans = np.load(os.path.join(path, 'relations.npy'))
+	borders = np.concatenate((nods_borders, edgs_spans), axis=1)
 	X_train, X_test, y_train, y_test = train_test_split(tokens_matrix, borders, test_size=0.30, random_state=42)
 	X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.15, random_state=42)
 	return (X_train, y_train), (X_valid, y_valid), (X_test, y_test)		
@@ -79,6 +79,7 @@ def get_hit(actual, predict):
 				 
 if __name__=='__main__':
 	train, valid, test = read_data()
-	get_f1(valid[1][:, :2], valid[1][:, :2])
-	print(train[0].shape)
-	print(get_hit([1, 2, 3], [[(1, 'test')], [(1, 'test')], [(3, 'test')]]))
+	print(train[0].shape, train[1].shape)
+	# get_f1(valid[1][:, :2], valid[1][:, :2])
+	# print(train[0].shape)
+	# print(get_hit([1, 2, 3], [[(1, 'test')], [(1, 'test')], [(3, 'test')]]))

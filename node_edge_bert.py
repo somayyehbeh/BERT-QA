@@ -29,8 +29,10 @@ class NodeEdgeDetector(torch.nn.Module):
 		self.nodestart = torch.nn.Linear(dim, 1)
 		self.nodeend = torch.nn.Linear(dim, 1)
 		
-		self.edgestart = torch.nn.Linear(dim, 1)
-		self.edgeend = torch.nn.Linear(dim, 1)
+		# self.edgestart = torch.nn.Linear(dim, 1)
+		# self.edgeend = torch.nn.Linear(dim, 1)
+		self.edgespan = torch.nn.Linear(dim, 1)
+		
 		self.dropout = torch.nn.Dropout(p=dropout)
 		self.clip_len = clip_len
 
@@ -48,11 +50,12 @@ class NodeEdgeDetector(torch.nn.Module):
 		a = self.dropout(lhs)
 		logits_node_start = self.nodestart(lhs)
 		logits_node_end = self.nodeend(lhs)
-		logits_edge_start = self.edgestart(lhs)
-		logits_edge_end = self.edgeend(lhs)
-		
+		logits_edge_span = self.edgespan(lhs)
+		# logits_edge_start = self.edgestart(lhs)
+		# logits_edge_end = self.edgeend(lhs)
+		# print(logits_node_start.size(), logits_node_end.size(), logits_edge_span.size())
 		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
-							logits_edge_start.transpose(1, 2), logits_edge_end.transpose(1, 2)], 1)
+							logits_edge_span.transpose(1, 2)], 1)
 		return logits
 
 
@@ -106,8 +109,13 @@ class TrainingLoop:
 				X, y = batch
 				X = X.to(device); y = y.to(device)
 				logits = self.model(X) 
-				loss = loss_function(logits, one_hot(y, num_classes=logits.size()[-1]).float(),
-							 reduction='sum')
+				nodes_onehot = one_hot(y[:, :2], num_classes=logits.size()[-1]).float()
+				
+				maxlen = logits.size()[-1]
+				actual = torch.cat((nodes_onehot, torch.unsqueeze(y[:, 2:], 1)[:, :, :maxlen]), 1)
+				
+
+				loss = loss_function(logits, actual, reduction='sum')
 				losses.append(loss)
 				loss.backward()
 				self.optimizer.step()
@@ -122,9 +130,14 @@ class TrainingLoop:
 			with torch.no_grad():
 				X, y = batch
 				X = X.to(device); y = y.to(device)
-				logits = self.model(X)
-				loss = loss_function(logits, one_hot(y, num_classes=logits.size()[-1]).float(),
-							 reduction='sum')
+				logits = self.model(X) 
+				nodes_onehot = one_hot(y[:, :2], num_classes=logits.size()[-1]).float()
+				
+				maxlen = logits.size()[-1]
+				actual = torch.cat((nodes_onehot, torch.unsqueeze(y[:, 2:], 1)[:, :, :maxlen]), 1)
+				
+
+				loss = loss_function(logits, actual, reduction='sum')
 				losses.append(loss)
 		logging.info(f'Epoch number: {epoch+1} Eval Loss is equal: {sum(losses)/len(losses)}')
 
@@ -192,11 +205,11 @@ if __name__=='__main__':
 	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
 	
 	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=400, shuffle=True, pin_memory=True)
+	train_dataloader = DataLoader(dataset=train_dataset, batch_size=4, shuffle=True, pin_memory=True)
 	valid_dataset = BordersDataset(valid)
-	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=100, shuffle=False, pin_memory=True)
+	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=400, shuffle=False, pin_memory=True)
 	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=200, shuffle=False, pin_memory=True)
+	test_dataloader = DataLoader(dataset=test_dataset, batch_size=2, shuffle=False, pin_memory=True)
 	
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	loss = mse_loss

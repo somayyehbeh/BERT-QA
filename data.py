@@ -11,6 +11,9 @@ from transformers import BertTokenizer
 from itertools import chain, combinations
 from sklearn.model_selection import train_test_split
 
+
+QUESTION_WORDS = ['what', 'which', 'where', 'when', 'why', 'who', 'how', 'whom']
+
 def powerset(iterable):
 	power_set = chain.from_iterable(combinations(iterable, r) for r in range(len(iterable)+1))
 	power_set = [list(item) for item in power_set]
@@ -65,6 +68,30 @@ def get_borders(bigger, smaller):
 				return [i+1, i+len(net_smaller)+1]
 	return [-1, -1]
 
+def get_relation(token_ids, entity_borders, question_words_ids):
+	# print(token_ids, entity_borders, question_words_ids)
+	# print(type(token_ids))
+	relation = token_ids[:entity_borders[0]]+token_ids[entity_borders[1]:]
+	relation = [item for item in relation if item not in question_words_ids]
+	# print(relation)
+	answer = []
+	for item in token_ids:
+		if item in relation:
+			answer.append(1)
+		else:
+			answer.append(0)
+	# print(token_ids)
+	# print(answer)
+	return answer
+
+def get_question_words_ids():
+	tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+	question_words_ids = tokenizer.convert_tokens_to_ids(QUESTION_WORDS)
+	question_words_ids += [101, 102]
+	return question_words_ids
+	
+
+
 
 def create_bertified_dataset(input_excel = r'intermediate.xlsx',
 							  oputput_pkl = r'bertified.npz'):
@@ -73,10 +100,6 @@ def create_bertified_dataset(input_excel = r'intermediate.xlsx',
 	token_mat = np.zeros((len(dataframe), maxlen), dtype="int32")
 	for i, row in enumerate(dataframe['token_matrix'].to_list()):
 		token_mat[i, :len(eval(row))] = eval(row)
-	relation_borders = np.zeros((len(dataframe), 2), dtype='int32')
-	for i, (bigger, smaller) in enumerate(zip(dataframe['token_matrix'].to_list(), 
-											  dataframe['relation_ids'].to_list())):
-		relation_borders[i, :] = get_borders(eval(bigger), eval(smaller))
 	entity_borders = np.zeros((len(dataframe), 2), dtype='int32')
 	for i, (bigger, ent1, ent2) in enumerate(zip(dataframe['token_matrix'].to_list(), 
 										   dataframe['first_entity_ids'].to_list(),
@@ -87,13 +110,19 @@ def create_bertified_dataset(input_excel = r'intermediate.xlsx',
 			entity_borders[i] = temp1
 		else:
 			entity_borders[i] = temp2
+	relation_borders = np.zeros((len(dataframe), maxlen), dtype='int32')
+	question_words_ids = get_question_words_ids()
+	for i, (token_array, ent_borders) in enumerate(zip(dataframe['token_matrix'].to_list(), 
+											  		   entity_borders)):
+		relation_borders[i, :len(eval(token_array))] = get_relation(eval(token_array), ent_borders, question_words_ids)
 	dumb_samples = []
 	for i, (tokens, relation, entity) in enumerate(zip(token_mat, relation_borders, entity_borders)):
-		if relation[0]==relation[-1] or entity[0]==entity[-1]:
+		if sum(relation)==0 or entity[0]==entity[-1]:
 			dumb_samples.append(i)
 	dumb_records = dataframe.iloc[dumb_samples, :]
 	dumb_records.to_excel('dumb_records.xlsx')
 	useful_records = dataframe[~(dataframe.index.isin(dumb_samples))]
+	# print(len(dumb_records), len(useful_records))
 	train, test = train_test_split(useful_records, test_size=0.30, random_state=42)
 	train, valid = train_test_split(train, test_size=0.15, random_state=42)
 	train.to_excel('train.xlsx'); valid.to_excel('valid.xlsx'); test.to_excel('test.xlsx')
@@ -129,6 +158,8 @@ def read_data(token_path=r'\semparse\data\ours\tokenmat.npy',
 
 if __name__ == '__main__':
 	
-	combine_with_reverb()
+	# combine_with_reverb()
 
 	create_bertified_dataset()
+	# print(get_question_words_ids())
+	# get_relation([101, 2129, 2172, 2769, 2001, 2139, 29510, 2005, 2604, 102], [8, 9], [2054, 2029, 2073, 2043, 2339, 2040, 2129, 3183])
