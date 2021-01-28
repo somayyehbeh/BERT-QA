@@ -158,7 +158,7 @@ def read_data(token_path=r'\semparse\data\ours\tokenmat.npy',
 
 if __name__ == '__main__':
 	
-	# combine_with_reverb()
+	combine_with_reverb()
 
 	create_bertified_dataset()
 	# print(get_question_words_ids())

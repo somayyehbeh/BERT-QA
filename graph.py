@@ -88,11 +88,11 @@ class ReverbKnowledgeBase:
 		self.relations = {}
 		for index, row in tqdm(df.iterrows(), total=df.shape[0], desc='Indexing ...'):
 			if row['rel'] in self.relations:
-				self.relations[row['rel']].append((row['arg1'], index))
-				self.relations[row['rel']].append((row['arg2'], index))
+				self.relations[row['rel']].append((row['arg1'], index, row['conf']))
+				self.relations[row['rel']].append((row['arg2'], index, row['conf']))
 			else:
-				self.relations[row['rel']] = [(row['arg1'], index)]
-				self.relations[row['rel']].append((row['arg2'], index))
+				self.relations[row['rel']] = [(row['arg1'], index, row['conf'])]
+				self.relations[row['rel']].append((row['arg2'], index, row['conf']))
 			
 	def tfidf_nodes_query(self, search_phrase, cutoff=50):
 		similarities = get_tf_idf_query_similarity(self.nodes_vectorizer, self.nodes_tfidf, search_phrase)
@@ -115,13 +115,13 @@ class ReverbKnowledgeBase:
 			for edge in edges.keys():
 				for item in self.relations[edge]:
 					if item[0]==node:
-						pruned.append((item[1], nodes[node], edges[edge]))
-		sorted_pruned = sorted(pruned, key=lambda x:x[1]+x[2], reverse=True)
+						pruned.append((item[1], item[-1], nodes[node], edges[edge]))
+		sorted_pruned = sorted(pruned, key=lambda x:x[2]+x[3], reverse=True)
 		return sorted_pruned
 		
 
 if __name__=='__main__':
-	RKBG = ReverbKnowledgeBase('./sample_reverb_tuples.txt') #	'./sample_reverb_tuples.txt'
+	RKBG = ReverbKnowledgeBase() #	'./sample_reverb_tuples.txt'
 	# print(RKBG.edges)
 	# print(RKBG.tfidf_nodes_query('fishkind'))
 	# print(RKBG.tfidf_edges_query('grew up in'))
