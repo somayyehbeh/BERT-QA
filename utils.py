@@ -25,21 +25,39 @@ def nodes_get_f1(predicts, golden):
 	predicted = (pred_end - pred_start).sum()
 	recall = overlap / expected
 	precision = overlap / predicted
-	f1 = 2 * recall * precision / (recall + precision)
+	f1 = np.divide(2 * recall * precision, recall + precision)
 	logging.info("Dataset-wide F1, precision and recall:")
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	overlap = (overlap_end - overlap_start)
 	recall = overlap / (gold_end - gold_start)
 	precision = overlap / (pred_end - pred_start)
-	f1 = 2 * recall * precision / (recall + precision)
+	f1 = np.divide(2 * recall * precision, recall + precision)
+	# f1 = list(filter(lambda item:not np.isnan(item), f1))
 	recall = recall.mean()
 	precision = precision.mean()
 	acc = (f1 == 1).mean()
-	f1 = f1.mean()
+	# print(f1)
+	# print(sum(f1), len(f1))
+	# f1 = sum(f1)/len(f1)
+	f1 = 2 * recall * precision / (recall + precision)
 	logging.info("Averaged F1, precision and recall:")
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	logging.info("Span accuracy")
 	logging.info(acc)
+
+def get_PRF(actual, predicted):
+	precision, recall = 0, 0
+	for act, pred in zip(actual, predicted):
+		if (act == 1 and pred==act):
+			recall+=1
+		if (pred==1 and act==pred):
+			precision+=1
+	precision = np.divide(precision, sum(predicted))
+	if np.isnan(precision):
+		precision=0
+	recall = np.divide(recall, sum(actual))
+	f1 = np.divide(2 * recall * precision, recall + precision)
+	return (f1, precision, recall)
 
 def edges_get_f1(predicts, golden):
 	rows, columns = golden.shape
@@ -58,6 +76,16 @@ def edges_get_f1(predicts, golden):
 	precision = common/preds
 	recall = common/actual
 	f1 = 2 * recall * precision / (recall + precision)
+	logging.info("Dataset-wide F1, precision and recall:")
+	logging.info(', '.join([str(item) for item in [f1, precision, recall]]))
+	f1, precision, recall = [], [], []
+	for question in range(rows):
+		f, p, r = get_PRF(golden[question], predicts[question])
+		f1.append(f); precision.append(p); recall.append(r)
+
+	f1 = sum(f1)/len(f1)
+	precision = sum(precision)/len(precision)
+	recall = sum(recall)/len(recall)
 	logging.info("Averaged F1, precision and recall:")
 	logging.info(', '.join([str(item) for item in [f1, precision, recall]]))
 	logging.info("Span accuracy")
