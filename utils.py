@@ -83,9 +83,10 @@ def edges_get_f1(predicts, golden):
 		f, p, r = get_PRF(golden[question], predicts[question])
 		f1.append(f); precision.append(p); recall.append(r)
 
-	f1 = sum(f1)/len(f1)
+	
 	precision = sum(precision)/len(precision)
 	recall = sum(recall)/len(recall)
+	f1 = np.divide(2 * recall * precision, recall + precision)
 	logging.info("Averaged F1, precision and recall:")
 	logging.info(', '.join([str(item) for item in [f1, precision, recall]]))
 	logging.info("Span accuracy")
