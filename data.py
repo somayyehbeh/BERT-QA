@@ -10,7 +10,7 @@ import numpy as np
 from transformers import BertTokenizer
 from itertools import chain, combinations
 from sklearn.model_selection import train_test_split
-
+from tqdm import tqdm
 
 QUESTION_WORDS = ['what', 'which', 'where', 'when', 'why', 'who', 'how', 'whom']
 
@@ -43,13 +43,15 @@ def get_normalized_triple(record_list, index):
 def combine_with_reverb(questions_path=r'data/Final_Sheet_990824.xlsx',
 				   reverb_path=r'data/reverb_wikipedia_tuples-1.1.txt'):
 	dataframe = pd.read_excel(questions_path, sheet_name=1, engine='openpyxl')
-	dataframe = dataframe[dataframe.Meaningful==1]
+	reverb = read_reverb(reverb_path)
+	dataframe = get_tuple_frequency(reverb, dataframe)
+	dataframe = dataframe[(dataframe['Frequency']<10)&(dataframe.Meaningful==1)]
 	tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 	addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
 	wordstoberttokens = lambda string:tokenizer.tokenize(string)
 	berttokenstoids = lambda tokens:tokenizer.convert_tokens_to_ids(tokens)
 	dataframe['token_matrix'] = dataframe.Question.apply(addspecialtokens).apply(wordstoberttokens).apply(berttokenstoids)
-	reverb = read_reverb(reverb_path)
+	
 	dataframe['triple'] = dataframe.Reverb_no.apply(lambda x:get_triple(reverb, x))
 	dataframe['normalized_triple'] = dataframe.Reverb_no.apply(lambda x:get_normalized_triple(reverb, x))
 	maxlen = dataframe['token_matrix'].apply(lambda x:len(x)).max()
@@ -93,8 +95,9 @@ def get_question_words_ids():
 
 
 
-def create_bertified_dataset(input_excel = r'intermediate.xlsx',
-							  oputput_pkl = r'bertified.npz'):
+def create_bertified_dataset( input_excel = r'intermediate.xlsx',
+							  oputput_pkl = r'bertified.npz',
+							  data_folder = r'data'):
 	dataframe = pd.read_excel('intermediate.xlsx', engine='openpyxl')
 	maxlen = dataframe['token_matrix'].apply(lambda x:len(eval(x))).max()
 	token_mat = np.zeros((len(dataframe), maxlen), dtype="int32")
@@ -125,7 +128,7 @@ def create_bertified_dataset(input_excel = r'intermediate.xlsx',
 	# print(len(dumb_records), len(useful_records))
 	train, test = train_test_split(useful_records, test_size=0.30, random_state=42)
 	train, valid = train_test_split(train, test_size=0.15, random_state=42)
-	train.to_excel('train.xlsx'); valid.to_excel('valid.xlsx'); test.to_excel('test.xlsx')
+	train.to_excel('./data/train.xlsx'); valid.to_excel('./data/valid.xlsx'); test.to_excel('./data/test.xlsx')
 	relation_borders = np.delete(relation_borders, dumb_samples, axis=0)
 	entity_borders = np.delete(entity_borders, dumb_samples, axis=0)
 	token_mat = np.delete(token_mat, dumb_samples, axis=0)
@@ -156,8 +159,37 @@ def read_data(token_path=r'\semparse\data\ours\tokenmat.npy',
 	ret = (traindata, devdata, testdata)
 	return ret
 
+def get_tuple_frequency(dataset_lines, questions):
+    # indexing 
+    index = {}
+#     tqdm(test_df.iterrows(), total=test_df.shape[0])
+    for idx, line in tqdm(enumerate(dataset_lines), total=len(dataset_lines), desc='Indexing ...'):
+        left = line[4]+'|'+line[5]
+        right = line[5]+'|'+line[6]
+        for item in [left, right]:
+            if item in index:
+                index[item]+=1
+            else:
+                index[item]=1
+#     frequency = lambda row:row['Reverb_no']
+    frequencies = []
+    for idx, row in tqdm(questions.iterrows(), total=questions.shape[0], desc='Filtering ...'):
+        reverb_number = row['Reverb_no']
+        left = dataset_lines[reverb_number][4]+'|'+dataset_lines[reverb_number][5]
+        right = dataset_lines[reverb_number][5]+'|'+dataset_lines[reverb_number][6]
+        frequency = max(index[left], index[right])
+        frequencies.append(frequency)
+    
+    questions['Frequency']=frequencies
+    return questions
+
+
 if __name__ == '__main__':
-	
+
+	# reverb_lines = read_reverb('reverb_wikipedia_tuples-1.1.txt')
+	# questions = pd.read_excel(r'data/Final_Sheet_990824.xlsx', sheet_name=1, engine='openpyxl')
+	# index = get_tuple_frequency(reverb_lines, questions)
+	# index[index['Frequency']<10].to_excel('')
 	combine_with_reverb()
 
 	create_bertified_dataset()
