@@ -1,8 +1,0 @@
-4853083	Fishkill	is a town in	Dutchess County	fishkill	be a town in	dutchess county	1	0.92759	http://en.wikipedia.org/wiki/Fishkill_(town),_New_York|http://yourweb119.info/fish/fish-kill.php|http://www.absoluteastronomy.com/topics/Pete_Seeger|http://www.absoluteastronomy.com/topics/Beacon,_New_York
-4853085	Fishkill	was constructed in	1896	fishkill	be construct in	1896	1	0.95117	http://en.wikipedia.org/wiki/Matteawan_State_Hospital
-4853086	Fishkill	is home to	the Hudson Valley Renegades	fishkill	be home to	the hudson valley renegades	1	0.92113	http://en.wikipedia.org/wiki/Fishkill_(town),_NY
-4853089	Fishkill	is the site of	Camp Mariah	fishkill	be the site of	camp mariah	1	0.92572	http://en.wikipedia.org/wiki/Fishkill,_NY
-4853095	Fishkind	grew up in	Freeport	fishkind	grow up in	freeport	1	0.90975	http://en.wikipedia.org/wiki/Arnold_Fishkind
-4853100	Fishlake National Forest	is located in	south central Utah	fishlake national forest	be locate in	south central utah	1	0.91618	http://en.wikipedia.org/wiki/Fishlake_National_Forest
-4853106	Fishman	was born in	Philadelphia	fishman	be bear in	philadelphia	1	0.96000	http://en.wikipedia.org/wiki/Jon_Fishman
-4853127	Fishman	was born in	Long Beach	fishman	be bear in	long beach	1	0.96000	http://en.wikipedia.org/wiki/Michael_Desmond_Fishman
