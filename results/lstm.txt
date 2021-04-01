@@ -1,0 +1,98 @@
+Note: You are using GPU for training
+Embedding match number 8130 out of 13135
+Shift model to GPU
+Namespace(batch_size=32, clip_gradient=0.6, cnn_dropout=0.5, cuda=True, data_dir='/content/drive/MyDrive/QA/', dataset='RelationPrediction', dev_every=2000, epochs=30, gpu=0, hidden_size=300, hits=5, input_size=300, log_every=1000, lr=0.0001, mode='static', num_layer=2, output_channel=300, patience=10, rel_label=4235, relation_prediction_mode='LSTM', results_path='results', rnn_dropout=0.3, rnn_fc_dropout=0.3, save_path='saved_checkpoints', seed=3435, specify_prefix='id1', train_embed=False, trained_model='', vector_cache='../../data/sq_glove300d.pt', weight_decay=0, words_dim=300, words_num=13135)
+VOCAB num 13135
+Train instance 9922
+Dev instance 1378
+Test instance 4042
+Relation Type 4235
+RelationPrediction(
+  (embed): Embedding(13135, 300)
+  (lstm): LSTM(300, 300, num_layers=2, dropout=0.3, bidirectional=True)
+  (dropout): Dropout(p=0.3)
+  (relu): ReLU()
+  (hidden2tag): Sequential(
+    (0): Linear(in_features=600, out_features=600, bias=True)
+    (1): BatchNorm1d(600, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3)
+    (4): Linear(in_features=600, out_features=4235, bias=True)
+  )
+)
+  Time Epoch Iteration Progress    (%Epoch)   Loss   Dev/Loss     Accuracy  Dev/Accuracy
+     0     1         1     1/311         0% 8.436241          0             
+    19     4      1001    68/311        22% 5.944436          15             
+Dev Precision:  29.753266%
+    38     7      2001   135/311        43% 4.493288          30             
+    57    10      3001   202/311        65% 1.984697          65             
+Dev Precision:  40.711176%
+    76    13      4001   269/311        86% 0.923799          86             
+    95    17      5001    25/311         8% 0.510308          92             
+Dev Precision:  43.541364%
+   114    20      6001    92/311        30% 0.183379          95             
+   133    23      7001   159/311        51% 0.354326          97             
+Dev Precision:  46.444122%
+   152    26      8001   226/311        73% 0.069992          98             
+   171    29      9001   293/311        94% 0.097290          98             
+Dev Precision:  48.911466%
+   190    33     10001    49/311        16% 0.129304          99             
+   209    36     11001   116/311        37% 0.032775          99             
+Dev Precision:  48.476052%
+   228    39     12001   183/311        59% 0.066795          99             
+   246    42     13001   250/311        80% 0.026019          99             
+Dev Precision:  49.782293%
+   266    46     14001     6/311         2% 0.013559          100             
+   284    49     15001    73/311        23% 0.015020          99             
+Dev Precision:  49.637155%
+   303    52     16001   140/311        45% 0.018422          99             
+   322    55     17001   207/311        67% 0.009247          99             
+Dev Precision:  49.201742%
+   341    58     18001   274/311        88% 0.013889          99             
+   360    62     19001    30/311        10% 0.010580          99             
+Dev Precision:  50.217707%
+   379    65     20001    97/311        31% 0.014849          99             
+   398    68     21001   164/311        53% 0.004922          99             
+Dev Precision:  49.927431%
+   417    71     22001   231/311        74% 0.011248          99             
+   436    74     23001   298/311        96% 0.005291          99             
+Dev Precision:  49.346880%
+   455    78     24001    54/311        17% 0.024657          99             
+   474    81     25001   121/311        39% 0.007132          99             
+Dev Precision:  50.362845%
+   493    84     26001   188/311        60% 0.013397          99             
+   512    87     27001   255/311        82% 0.009264          99             
+Dev Precision:  49.564586%
+   531    91     28001    11/311         4% 0.005898          100             
+   550    94     29001    78/311        25% 0.004141          99             
+Dev Precision:  48.548621%
+   569    97     30001   145/311        47% 0.004466          99             
+   588   100     31001   212/311        68% 0.007716          99             
+Dev Precision:  49.637155%
+   607   103     32001   279/311        90% 0.002198          99             
+   625   107     33001    35/311        11% 0.001916          99             
+Dev Precision:  49.274311%
+   645   110     34001   102/311        33% 0.002265          99             
+   663   113     35001   169/311        54% 0.003724          99             
+Dev Precision:  49.709724%
+   682   116     36001   236/311        76% 0.006266          99             
+   701   119     37001   303/311        97% 0.002276          99             
+Dev Precision:  48.984035%
+   720   123     38001    59/311        19% 0.007783          99             
+   739   126     39001   126/311        41% 0.011632          99             
+Dev Precision:  50.290276%
+   758   129     40001   193/311        62% 0.005672          99             
+   777   132     41001   260/311        84% 0.000556          99             
+Dev Precision:  50.290276%
+   796   136     42001    16/311         5% 0.023377          100             
+   815   139     43001    83/311        27% 0.000881          99             
+Dev Precision:  49.927431%
+   834   142     44001   150/311        48% 0.007245          99             
+   853   145     45001   217/311        70% 0.003474          99             
+Dev Precision:  49.709724%
+   872   148     46001   284/311        91% 0.001865          99             
+   891   152     47001    40/311        13% 0.032283          99             
+Dev Precision:  49.346880%
+Early Stopping. Epoch: 155, Best Dev Acc: 0.5036284470246735
+1899
+Test Precision:  46.981692%
