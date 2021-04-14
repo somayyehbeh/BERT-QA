@@ -1,0 +1,25 @@
+/content/BuboQA/relation_prediction/lr
+Namespace(data_dir='../../data/lr_glove_rel_features/', hits=5, results_path='./results/embeddings_rel/', save_path='./saved_checkpoints/embeddings_rel', trained_model='')
+training the model - this will take some time...
+/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+model trained, saving to pickle...
+Accuracy on training set: 81.38189693880247
+
+Testing on valid data...
+Accuracy on valid dataset: 75.84835876098012
+Hits: 1, Retrieved: 8203, Total: 10815, RetrievalRate: 75.84835876098012
+Hits: 3, Retrieved: 9739, Total: 10815, RetrievalRate: 90.05085529357375
+Hits: 5, Retrieved: 10038, Total: 10815, RetrievalRate: 92.81553398058253
+
+Testing on test data...
+Accuracy on test dataset: 75.68067304580964
+Hits: 1, Retrieved: 16372, Total: 21633, RetrievalRate: 75.68067304580964
+Hits: 3, Retrieved: 19379, Total: 21633, RetrievalRate: 89.5807331391855
+Hits: 5, Retrieved: 20033, Total: 21633, RetrievalRate: 92.60389220172884
