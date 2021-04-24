@@ -201,9 +201,26 @@ class TrainingLoop:
 			print(tabulate(data, headers=["Question", "Node", "Edge"]))
 		else:
 			return node, edge
+	def readable_predict_article(self, device, _input='Where was Bill Gates Born?', print_result=True):
+    ### getting node and edge
+		addspecialtokens = lambda string:f'[CLS] {string} [SEP]'
+		wordstoberttokens = lambda string:self.model.tokenizer.tokenize(string)
+		berttokenstoids = lambda tokens:self.model.tokenizer.convert_tokens_to_ids(tokens)
+		input_token_ids = berttokenstoids(wordstoberttokens(addspecialtokens(_input)))
+		input_tensors = torch.tensor([input_token_ids]).long()
+		input_tensors = input_tensors.to(device)
+		with torch.no_grad():
+			logits = self.model(input_tensors)
+		nodes_borders = torch.argmax(logits[:, :2], dim=2).cpu().detach().numpy().tolist()
+		edges_spans = np.where(logits[:, 2].cpu().detach().numpy() > 0.5, 1, 0)
 
-
-
+		node = self.model.tokenizer.convert_ids_to_tokens(input_token_ids[nodes_borders[0][0]:nodes_borders[0][1]])
+		edge = self.model.tokenizer.convert_ids_to_tokens(np.array(input_token_ids)[edges_spans[0]==1])
+		if print_result:
+			data = [[_input, node, edge]]
+			print(tabulate(data, headers=["Question", "Node", "Edge"]))
+		else:
+			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
 	train, valid, test = read_data()
