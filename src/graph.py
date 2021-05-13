@@ -13,7 +13,7 @@ Searchin with tfidf and Cosign Similarity
 '''
 
 class ReverbKnowledgeBaseGraph:
-	def __init__(self, path='./reverb_wikipedia_tuples-1.1.txt'):
+	def __init__(self, path='../data/reverb_wikipedia_tuples-1.1.txt'):
 		super().__init__()
 		df = pd.read_csv(path, sep='\t', header=None)
 		reverb_columns_name = ['ExID', 'arg1', 'rel', 'arg2', 'narg1', 'nrel', 'narg2', 'csents', 'conf', 'urls']
@@ -77,7 +77,7 @@ class ReverbKnowledgeBaseGraph:
 		edges = self.edgesquery(edge)
 
 class ReverbKnowledgeBase:
-	def __init__(self, path='./reverb_wikipedia_tuples-1.1.txt'):
+	def __init__(self, path='../data/reverb_wikipedia_tuples-1.1.txt'):
 		super().__init__()
 		df = pd.read_csv(path, sep='\t', header=None)
 		reverb_columns_name = ['ExID', 'arg1', 'rel', 'arg2', 'narg1', 'nrel', 'narg2', 'csents', 'conf', 'urls']

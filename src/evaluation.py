@@ -1,4 +1,4 @@
-from node_edge_bert import *
+from train import *
 from graph import *
 import pandas as pd
 from utils import get_hit

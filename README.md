@@ -3,6 +3,7 @@ The `BERT QUESTION ANSWER` is `PYTHON SOURCE CODE` that allows `Researchers in t
 # Prerequisites
 1. `LINUX/WINDOWS`
 2. python=3.7
+3. transformers==4.6.0
 2. torch==1.8.1+cu101
 3. networkx==2.5
 

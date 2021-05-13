@@ -176,10 +176,10 @@ class TrainingLoop:
 			edges_get_f1(pred_edges_span, gold_edges_span)
 
 	
-	def save(self, save_path='./models/node_edge_bert.pt'):
+	def save(self, save_path='../models/node_edge_bert.pt'):
 		torch.save(self.model, save_path)
 	
-	def load(self, save_path='./models/node_edge_bert.pt'):
+	def load(self, save_path='../models/node_edge_bert.pt'):
 		self.model = torch.load(save_path)
 
 	def readable_predict(self, device, _input='Where was Bill Gates Born?', print_result=True):
