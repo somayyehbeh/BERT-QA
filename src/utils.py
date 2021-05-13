@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 logging.basicConfig(level=logging.DEBUG)
 
-def read_data(path='./bertified/'):
+def read_data(path='../bertified/'):
 	tokens_matrix = np.load(os.path.join(path, 'tokenmat.npy'))
 	nods_borders = np.load(os.path.join(path, 'entities.npy'))
 	edgs_spans = np.load(os.path.join(path, 'relations.npy'))
@@ -32,13 +32,9 @@ def nodes_get_f1(predicts, golden):
 	recall = overlap / (gold_end - gold_start)
 	precision = overlap / (pred_end - pred_start)
 	f1 = np.divide(2 * recall * precision, recall + precision)
-	# f1 = list(filter(lambda item:not np.isnan(item), f1))
 	recall = recall.mean()
 	precision = precision.mean()
 	acc = (f1 == 1).mean()
-	# print(f1)
-	# print(sum(f1), len(f1))
-	# f1 = sum(f1)/len(f1)
 	f1 = 2 * recall * precision / (recall + precision)
 	logging.info("Averaged F1, precision and recall:")
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))

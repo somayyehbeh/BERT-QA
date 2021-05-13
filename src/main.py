@@ -2,6 +2,10 @@ from node_edge_bert import *
 from graph import *
 import pandas as pd
 from utils import get_hit
+'''
+Script to perform whole system Evaluation
+'''
+
 
 if __name__=='__main__':
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -16,7 +20,7 @@ if __name__=='__main__':
 
 	RKBG = ReverbKnowledgeBase()
 
-	test_df = pd.read_excel('./test.xlsx')
+	test_df = pd.read_excel('../data/test.xlsx')
 	actual = test_df['Reverb_no'].to_list()
 	system_results = []
 	for index, row in tqdm(test_df.iterrows(), total=test_df.shape[0]):

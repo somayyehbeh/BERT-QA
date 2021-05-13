@@ -2,7 +2,9 @@ from node_edge_bert import *
 from graph import *
 import pandas as pd
 from utils import get_hit
-
+'''
+	A simple script to fill article table 
+'''
 if __name__=='__main__':
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 	bert = BertModel.from_pretrained("bert-base-uncased")

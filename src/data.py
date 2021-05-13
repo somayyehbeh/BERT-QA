@@ -7,6 +7,7 @@ Created on Sat Dec 19 22:23:21 2020
 
 import pandas as pd
 import numpy as np 
+import os
 from transformers import BertTokenizer
 from itertools import chain, combinations
 from sklearn.model_selection import train_test_split
@@ -40,8 +41,8 @@ def get_normalized_triple(record_list, index):
 
 
 
-def combine_with_reverb(questions_path=r'data/Final_Sheet_990824.xlsx',
-				   reverb_path=r'data/reverb_wikipedia_tuples-1.1.txt'):
+def combine_with_reverb(questions_path=r'../data/Final_Sheet_990824.xlsx',
+				   reverb_path=r'../data/reverb_wikipedia_tuples-1.1.txt'):
 	dataframe = pd.read_excel(questions_path, sheet_name=1, engine='openpyxl')
 	reverb = read_reverb(reverb_path)
 	dataframe = get_tuple_frequency(reverb, dataframe)
@@ -59,7 +60,7 @@ def combine_with_reverb(questions_path=r'data/Final_Sheet_990824.xlsx',
 	dataframe['first_entity_ids'] = dataframe['triple'].apply(lambda x:x[0]).apply(addspecialtokens).apply(wordstoberttokens).apply(berttokenstoids)
 	dataframe['second_entity_ids'] = dataframe['triple'].apply(lambda x:x[-1]).apply(addspecialtokens).apply(wordstoberttokens).apply(berttokenstoids)
 	dataframe['relation_ids'] = dataframe['triple'].apply(lambda x:x[1]).apply(addspecialtokens).apply(wordstoberttokens).apply(berttokenstoids)
-	dataframe.to_excel("intermediate.xlsx")
+	dataframe.to_excel("../data/intermediate.xlsx")
 	
 def get_borders(bigger, smaller):
 	power_set = powerset(smaller)
@@ -95,10 +96,10 @@ def get_question_words_ids():
 
 
 
-def create_bertified_dataset( input_excel = r'intermediate.xlsx',
-							  oputput_pkl = r'bertified.npz',
+def create_bertified_dataset( input_excel_dir = r'../data/',
+							  output_pkl_dir = r'../bertified/',
 							  data_folder = r'data'):
-	dataframe = pd.read_excel('intermediate.xlsx', engine='openpyxl')
+	dataframe = pd.read_excel(os.path.join(input_excel_dir, 'intermediate.xlsx'), engine='openpyxl')
 	maxlen = dataframe['token_matrix'].apply(lambda x:len(eval(x))).max()
 	token_mat = np.zeros((len(dataframe), maxlen), dtype="int32")
 	for i, row in enumerate(dataframe['token_matrix'].to_list()):
@@ -123,26 +124,26 @@ def create_bertified_dataset( input_excel = r'intermediate.xlsx',
 		if sum(relation)==0 or entity[0]==entity[-1]:
 			dumb_samples.append(i)
 	dumb_records = dataframe.iloc[dumb_samples, :]
-	dumb_records.to_excel('dumb_records.xlsx')
+	dumb_records.to_excel(os.path.join(input_excel_dir, 'dumb_records.xlsx'))
 	useful_records = dataframe[~(dataframe.index.isin(dumb_samples))]
 	# print(len(dumb_records), len(useful_records))
 	train, test = train_test_split(useful_records, test_size=0.30, random_state=42)
 	train, valid = train_test_split(train, test_size=0.15, random_state=42)
-	train.to_excel('./data/train.xlsx'); valid.to_excel('./data/valid.xlsx'); test.to_excel('./data/test.xlsx')
+	train.to_excel(os.path.join(input_excel_dir, 'train.xlsx')); valid.to_excel(os.path.join(input_excel_dir, 'valid.xlsx')); test.to_excel(os.path.join(input_excel_dir, 'test.xlsx'))
 	relation_borders = np.delete(relation_borders, dumb_samples, axis=0)
 	entity_borders = np.delete(entity_borders, dumb_samples, axis=0)
 	token_mat = np.delete(token_mat, dumb_samples, axis=0)
 	# print(entity_borders.shape, token_mat.shape, entity_borders.shape)
-	with open('tokenmat.npy', 'wb') as f:
+	with open(os.path.join(output_pkl_dir, 'tokenmat.npy'), 'wb') as f:
 		np.save(f, token_mat)
-	with open('entities.npy', 'wb') as f:
+	with open(os.path.join(output_pkl_dir, 'entities.npy'), 'wb') as f:
 		np.save(f, entity_borders)
-	with open('relations.npy', 'wb') as f:
+	with open(os.path.join(output_pkl_dir,'relations.npy'), 'wb') as f:
 		np.save(f, relation_borders)
 			
-def read_data(token_path=r'\semparse\data\ours\tokenmat.npy',	
-			relation_path=r'\semparse\data\ours\relations.npy', 
-			entity_path=r'\semparse\data\ours\entities.npy'):
+def read_data(token_path=r'../bertified/tokenmat.npy',	
+			relation_path=r'../bertified/relations.npy', 
+			entity_path=r'../bertified/entities.npy'):
 	tokens = np.load(token_path)
 	relations = np.load(relation_path)
 	entities = np.load(entity_path)

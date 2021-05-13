@@ -6,6 +6,12 @@ from tqdm import tqdm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from utils import get_tf_idf_query_similarity
 
+'''
+KnowledgeBase Utililies / Managment
+indexing .... 
+Searchin with tfidf and Cosign Similarity 
+'''
+
 class ReverbKnowledgeBaseGraph:
 	def __init__(self, path='./reverb_wikipedia_tuples-1.1.txt'):
 		super().__init__()
@@ -121,16 +127,6 @@ class ReverbKnowledgeBase:
 		
 
 if __name__=='__main__':
-	RKBG = ReverbKnowledgeBase() #	'./sample_reverb_tuples.txt'
-	# print(RKBG.edges)
-	# print(RKBG.tfidf_nodes_query('fishkind'))
-	# print(RKBG.tfidf_edges_query('grew up in'))
+	RKBG = ReverbKnowledgeBase(r'C:\git\reverb_wikipedia_tuples-1.1.txt') #	'./sample_reverb_tuples.txt'
+	print(len(RKBG.nodes_vectorizer.vocabulary_), len(RKBG.edges_vectorizer.vocabulary_))
 	print(RKBG.tfidf_query(node='fishkind', edge='grew up in'))
-
-	# RKBG = ReverbKnowledgeBaseGraph() #	'./sample_reverb_tuples.txt'
-	# # print(RKBG.edges)
-	# print(RKBG.tfidf_nodes_query('fishkind'))
-	# print(RKBG.tfidf_edges_query('grew up in'))
-	# print('candidates')
-	# fishkind, Edge:did fishkind grow up
-	# print(RKBG.query(node='fishkind', edge='grew up in'))
