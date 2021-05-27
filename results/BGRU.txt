@@ -1,0 +1,67 @@
+##############################################
+#########   ENTITIES  ########################
+##############################################
+/content/BuboQA/entity_detection/nn
+Note: You are using GPU for training
+Embedding match number 8546 out of 13972
+Shift model to GPU
+Namespace(batch_size=256, clip_gradient=0.6, cuda=True, data_dir='/content/drive/MyDrive/qa', dataset='EntityDetection', dev_every=2000, entity_detection_mode='GRU', epochs=30, gpu=0, hidden_size=300, hits=100, input_size=300, label=4, log_every=1000, lr=0.0001, num_layer=2, patience=10, results_path='query_text', rnn_dropout=0.3, rnn_fc_dropout=0.3, save_path='saved_checkpoints', seed=3435, specify_prefix='id1', train_embed=False, trained_model='', vector_cache='../../data/sq_glove300d.pt', weight_decay=0, words_dim=300, words_num=13972)
+VOCAB num 13972
+Train instance 9921
+Dev instance 1751
+Test instance 5003
+Entity Type 4
+EntityDetection(
+  (embed): Embedding(13972, 300)
+  (gru): GRU(300, 300, num_layers=2, dropout=0.3, bidirectional=True)
+  (dropout): Dropout(p=0.3)
+  (relu): ReLU()
+  (hidden2tag): Sequential(
+    (0): Linear(in_features=600, out_features=600, bias=True)
+    (1): BatchNorm1d(600, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3)
+    (4): Linear(in_features=600, out_features=4, bias=True)
+  )
+)
+  Time Epoch Iteration Progress    (%Epoch)   Loss   Dev/Loss     Accuracy  Dev/Accuracy
+     0     1         1     1/39          3% 1.448368          0.0             
+    69    26      1001    26/39         67% 0.092620          64.79867788461539             
+/usr/local/lib/python3.7/dist-packages/torchtext/data/field.py:322: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  return Variable(arr, volatile=not train)
+Dev Precision:  81.584949% Recall:  81.306818% F1 Score:  81.445646%
+   137    52      2001    12/39         31% 0.065137          72.72135416666667             
+   205    77      3001    37/39         95% 0.037631          81.9045608108108             
+Dev Precision:  74.133949% Recall:  72.954545% F1 Score:  73.539519%
+   273   103      4001    23/39         59% 0.023268          89.92866847826087             
+   341   129      5001     9/39         23% 0.009735          95.09548611111111             
+Dev Precision:  78.494010% Recall:  78.181818% F1 Score:  78.337603%
+   409   154      6001    34/39         87% 0.010325          95.54227941176471             
+   477   180      7001    20/39         51% 0.007054          97.40234375             
+Dev Precision:  76.823064% Recall:  77.215909% F1 Score:  77.018986%
+   545   206      8001     6/39         15% 0.007623          97.91666666666667             
+   613   231      9001    31/39         79% 0.006632          98.18548387096774             
+Dev Precision:  76.683645% Recall:  76.988636% F1 Score:  76.835838%
+   681   257     10001    17/39         44% 0.005233          98.57536764705883             
+   749   283     11001     3/39          8% 0.003354          98.4375             
+Dev Precision:  78.119658% Recall:  77.897727% F1 Score:  78.008535%
+   817   308     12001    28/39         72% 0.002058          98.46540178571429             
+   885   334     13001    14/39         36% 0.000678          99.10714285714286             
+Dev Precision:  78.208785% Recall:  77.897727% F1 Score:  78.052946%
+   953   359     14001    39/39        100% 0.003107          98.54853341397036             
+  1021   385     15001    25/39         64% 0.001213          99.296875             
+Dev Precision:  73.955352% Recall:  73.409091% F1 Score:  73.681209%
+  1089   411     16001    11/39         28% 0.003743          98.7215909090909             
+  1157   436     17001    36/39         92% 0.003794          98.78472222222223             
+Dev Precision:  76.883562% Recall:  76.534091% F1 Score:  76.708428%
+  1226   462     18001    22/39         56% 0.002262          99.16548295454545             
+  1294   488     19001     8/39         21% 0.001303          98.779296875             
+Dev Precision:  75.646180% Recall:  74.829545% F1 Score:  75.235647%
+  1362   513     20001    33/39         85% 0.000193          99.3844696969697             
+  1430   539     21001    19/39         49% 0.002121          99.23930921052632             
+Dev Precision:  77.050114% Recall:  76.875000% F1 Score:  76.962457%
+  1498   565     22001     5/39         13% 0.001202          99.296875             
+  1567   590     23001    30/39         77% 0.000788          99.70052083333333             
+Dev Precision:  76.618911% Recall:  75.965909% F1 Score:  76.291013%
+Early Stopping. Epoch: 616, Best Dev F1: 0.8144564598747865
+Test Precision:  77.619715% Recall:  77.002584% F1 Score:  77.309918%

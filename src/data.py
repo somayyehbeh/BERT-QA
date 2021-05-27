@@ -43,7 +43,7 @@ def get_normalized_triple(record_list, index):
 
 def combine_with_reverb(questions_path=r'../data/Final_Sheet_990824.xlsx',
 				   reverb_path=r'../data/reverb_wikipedia_tuples-1.1.txt'):
-	dataframe = pd.read_excel(questions_path, sheet_name=1, engine='openpyxl')
+	dataframe = pd.read_excel(questions_path, engine='openpyxl')
 	reverb = read_reverb(reverb_path)
 	dataframe = get_tuple_frequency(reverb, dataframe)
 	dataframe = dataframe[(dataframe['Frequency']<10)&(dataframe.Meaningful==1)]
@@ -191,7 +191,7 @@ if __name__ == '__main__':
 	# questions = pd.read_excel(r'data/Final_Sheet_990824.xlsx', sheet_name=1, engine='openpyxl')
 	# index = get_tuple_frequency(reverb_lines, questions)
 	# index[index['Frequency']<10].to_excel('')
-	combine_with_reverb()
+	combine_with_reverb(questions_path=r'../data/normalized_questions.xlsx')
 
 	create_bertified_dataset()
 	# print(get_question_words_ids())
