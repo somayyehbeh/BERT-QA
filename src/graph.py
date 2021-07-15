@@ -9,14 +9,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 from pattern.en import conjugate, lemma, lexeme,PRESENT,SG,PAST
 import sys
 
-####TEST
-a = lemma('gave')
-b = lexeme('gave')
-c = conjugate(verb='give',tense=PRESENT,number=SG) # he / she / it
+
+#### pattern python>=3.7 compatibility problem
+def pattern_stopiteration_workaround():
+    try:
+        print(lexeme('gave'))
+    except:
+        pass
+pattern_stopiteration_workaround()
 
 
-print(conjugate(verb='give',tense=PAST))
-sys.exit()
 '''
 KnowledgeBase Utililies / Managment
 indexing .... 
@@ -56,9 +58,7 @@ class ReverbKnowledgeBaseGraph:
 
 	def query(self, node='Bill Gates', edge='Born'):
 		nodes = self.nodesquery(node)
-		print(nodes)
 		edges = self.edgesquery(edge)
-		print(edges)
 		candidates = []
 		for nd in nodes:
 			for ed in edges:
@@ -128,12 +128,14 @@ class ReverbKnowledgeBase:
 		return sorted_ranks
 
 	def tfidf_query(self, node='Bill Gates', edge='Born'):
-		print(edge)
+		# print(edge)
 		edge_list = edge.split()
 		if len(edge_list)>=2 and edge_list[0]=='did':
 			edge_list[1] = conjugate(verb=edge_list[1],tense=PAST)
-		edge = ' '.join(edge_list[1:])
-		print(edge)
+			edge = ' '.join(edge_list[1:])
+		else:
+			edge = ' '.join(edge_list)
+		# print(edge)
 		if edge.strip()!='is':
 			nodes = self.tfidf_nodes_query(node)
 			edges = self.tfidf_edges_query(edge)
@@ -167,7 +169,7 @@ class ReverbKnowledgeBase:
 			return sorted_pruned[:min(len(sorted_pruned), 100)]
 
 if __name__=='__main__':
-	RKBG = ReverbKnowledgeBase(r'C:\git\reverb_wikipedia_tuples-1.1.txt') #	'./sample_reverb_tuples.txt'
+	RKBG = ReverbKnowledgeBase(r'D:\desktop\reverb_wikipedia_tuples-1.1.txt') #	'./sample_reverb_tuples.txt'
 	# print(len(RKBG.nodes_vectorizer.vocabulary_), len(RKBG.edges_vectorizer.vocabulary_))
 	# print(RKBG.tfidf_query(node='fishkind', edge='grew up in'))
 	print(RKBG.tfidf_query(node='abegg', edge='did die'))
