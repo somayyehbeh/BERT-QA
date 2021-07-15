@@ -6,7 +6,17 @@ from tqdm import tqdm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from utils import get_tf_idf_query_similarity
 from sklearn.metrics.pairwise import cosine_similarity
+from pattern.en import conjugate, lemma, lexeme,PRESENT,SG,PAST
+import sys
 
+####TEST
+a = lemma('gave')
+b = lexeme('gave')
+c = conjugate(verb='give',tense=PRESENT,number=SG) # he / she / it
+
+
+print(conjugate(verb='give',tense=PAST))
+sys.exit()
 '''
 KnowledgeBase Utililies / Managment
 indexing .... 
@@ -118,6 +128,12 @@ class ReverbKnowledgeBase:
 		return sorted_ranks
 
 	def tfidf_query(self, node='Bill Gates', edge='Born'):
+		print(edge)
+		edge_list = edge.split()
+		if len(edge_list)>=2 and edge_list[0]=='did':
+			edge_list[1] = conjugate(verb=edge_list[1],tense=PAST)
+		edge = ' '.join(edge_list[1:])
+		print(edge)
 		if edge.strip()!='is':
 			nodes = self.tfidf_nodes_query(node)
 			edges = self.tfidf_edges_query(edge)
@@ -152,6 +168,6 @@ class ReverbKnowledgeBase:
 
 if __name__=='__main__':
 	RKBG = ReverbKnowledgeBase(r'C:\git\reverb_wikipedia_tuples-1.1.txt') #	'./sample_reverb_tuples.txt'
-	print(len(RKBG.nodes_vectorizer.vocabulary_), len(RKBG.edges_vectorizer.vocabulary_))
+	# print(len(RKBG.nodes_vectorizer.vocabulary_), len(RKBG.edges_vectorizer.vocabulary_))
 	# print(RKBG.tfidf_query(node='fishkind', edge='grew up in'))
-	print(RKBG.tfidf_query(node='biddu', edge='is '))
+	print(RKBG.tfidf_query(node='abegg', edge='did die'))
