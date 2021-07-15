@@ -5,6 +5,7 @@ from fuzzywuzzy import process
 from tqdm import tqdm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from utils import get_tf_idf_query_similarity
+from sklearn.metrics.pairwise import cosine_similarity
 
 '''
 KnowledgeBase Utililies / Managment
@@ -85,6 +86,7 @@ class ReverbKnowledgeBase:
 		df = df.dropna()
 		df = df.drop_duplicates()
 		self.KB = df
+		self.is_facts = self.KB[(self.KB.rel.apply(lambda rg:rg.find('is ')!=-1))|(self.KB.rel.apply(lambda rg:rg.find('Is ')!=-1))]
 		self.nodes = self.KB['arg1'].to_list()+self.KB['arg2'].to_list()
 		self.edges = self.KB['rel'].to_list()
 		self.nodes_vectorizer = TfidfVectorizer()
@@ -99,7 +101,9 @@ class ReverbKnowledgeBase:
 			else:
 				self.relations[row['rel']] = [(row['arg1'], index, row['conf'])]
 				self.relations[row['rel']].append((row['arg2'], index, row['conf']))
-			
+		
+
+
 	def tfidf_nodes_query(self, search_phrase, cutoff=50):
 		similarities = get_tf_idf_query_similarity(self.nodes_vectorizer, self.nodes_tfidf, search_phrase)
 		ranks = {k:v for k,v in zip(self.nodes, similarities)}
@@ -114,19 +118,40 @@ class ReverbKnowledgeBase:
 		return sorted_ranks
 
 	def tfidf_query(self, node='Bill Gates', edge='Born'):
-		nodes = self.tfidf_nodes_query(node)
-		edges = self.tfidf_edges_query(edge)
-		pruned = []
-		for node in nodes.keys():
-			for edge in edges.keys():
-				for item in self.relations[edge]:
-					if item[0]==node:
-						pruned.append((item[1], item[-1], nodes[node], edges[edge]))
-		sorted_pruned = sorted(pruned, key=lambda x:x[2]+x[3], reverse=True)
-		return sorted_pruned
-		
+		if edge.strip()!='is':
+			nodes = self.tfidf_nodes_query(node)
+			edges = self.tfidf_edges_query(edge)
+			pruned = []
+			for node in nodes.keys():
+				for edge in edges.keys():
+					for item in self.relations[edge]:
+						if item[0]==node:
+							pruned.append((item[1], item[-1], nodes[node], edges[edge]))
+			sorted_pruned = sorted(pruned, key=lambda x:x[2]+x[3], reverse=True)
+			return sorted_pruned[:min(len(sorted_pruned), 100)]
+		else:
+			nodes = self.tfidf_nodes_query(node)
+			arg1 = self.KB.loc[self.KB['arg1'].isin(nodes.keys())]
+			arg2 = self.KB.loc[self.KB['arg2'].isin(nodes.keys())]
+			# print(self.KB.loc[self.KB['arg2'].isin(nodes.keys())][:10])
+			
+			pruned = []
+			for node, similarity in nodes.items():
+				for idx, row in arg1.loc[arg1['arg1']==node].iterrows():
+					temp1 = self.edges_vectorizer.transform([row['rel']])
+					temp2 = self.edges_vectorizer.transform([edge])
+					edge_similarity = cosine_similarity(temp1, temp2).flatten().item()
+					pruned.append((idx, row['conf'], similarity, edge_similarity))
+				for idx, row in arg2.loc[arg2['arg2']==node].iterrows():
+					temp1 = self.edges_vectorizer.transform([row['rel']])
+					temp2 = self.edges_vectorizer.transform([edge])
+					edge_similarity = cosine_similarity(temp1, temp2).flatten().item()
+					pruned.append((idx, row['conf'], similarity, edge_similarity))
+			sorted_pruned = sorted(pruned, key=lambda x:x[2]+x[3], reverse=True)
+			return sorted_pruned[:min(len(sorted_pruned), 100)]
 
 if __name__=='__main__':
 	RKBG = ReverbKnowledgeBase(r'C:\git\reverb_wikipedia_tuples-1.1.txt') #	'./sample_reverb_tuples.txt'
 	print(len(RKBG.nodes_vectorizer.vocabulary_), len(RKBG.edges_vectorizer.vocabulary_))
-	print(RKBG.tfidf_query(node='fishkind', edge='grew up in'))
+	# print(RKBG.tfidf_query(node='fishkind', edge='grew up in'))
+	print(RKBG.tfidf_query(node='biddu', edge='is '))
