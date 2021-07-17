@@ -11,6 +11,9 @@ np.seterr(divide='ignore', invalid='ignore')
 from tabulate import tabulate
 from tqdm import tqdm
 
+from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
+
 
 
 import logging
@@ -223,28 +226,69 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	train, valid, test = read_data()
-	bert = BertModel.from_pretrained("bert-base-uncased")
-	tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-	node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
-	optimizer = AdamW
-	kw = {'lr':0.0002, 'weight_decay':0.1}
-	tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
-	
-	train_dataset = BordersDataset(train)
-	train_dataloader = DataLoader(dataset=train_dataset, batch_size=200, shuffle=True, pin_memory=True)
-	valid_dataset = BordersDataset(valid)
-	valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=200, shuffle=False, pin_memory=True)
-	test_dataset = BordersDataset(test)
-	test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
-	
-	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-	loss = mse_loss
-	tl.train(train_dataloader, valid_dataloader, loss)
-	tl.save()
-	##################################################
-	tl.load()
-	tl.predict(test_dataloader, device)
-	##################################################
-	tl.readable_predict(device, print_result=True)
-	
+	cross_validation = False
+	if cross_validation == True:
+		train, valid, test = read_data()
+		X = np.vstack((train[0], valid[0], test[0]))
+		y = np.vstack((train[1], valid[1], test[1]))
+		kf = KFold(n_splits=4, random_state=99, shuffle=True)
+		fold = 1
+		for train_index, test_index in kf.split(X, y):
+			X_train, X_test = X[train_index], X[test_index]
+			y_train, y_test = y[train_index], y[test_index]
+			X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.15, random_state=99)
+			train = (X_train, y_train)
+			valid = (X_valid, y_valid)
+			test = (X_test, y_test)
+			print(f'\n\n############# Fold Number {fold} #############\n\n')
+			fold+=1
+			bert = BertModel.from_pretrained("bert-base-uncased")
+			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+			node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+			optimizer = AdamW
+			kw = {'lr':0.0002, 'weight_decay':0.1}
+			tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
+			
+			train_dataset = BordersDataset(train)
+			train_dataloader = DataLoader(dataset=train_dataset, batch_size=200, shuffle=True, pin_memory=True)
+			valid_dataset = BordersDataset(valid)
+			valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=200, shuffle=False, pin_memory=True)
+			test_dataset = BordersDataset(test)
+			test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
+			
+			device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+			loss = mse_loss
+			tl.train(train_dataloader, valid_dataloader, loss)
+			tl.save()
+			##################################################
+			tl.load()
+			tl.predict(test_dataloader, device)
+			##################################################
+			tl.readable_predict(device, print_result=True)
+
+	else:
+		train, valid, test = read_data()
+		bert = BertModel.from_pretrained("bert-base-uncased")
+		tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+		node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+		optimizer = AdamW
+		kw = {'lr':0.0002, 'weight_decay':0.1}
+		tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
+		
+		train_dataset = BordersDataset(train)
+		train_dataloader = DataLoader(dataset=train_dataset, batch_size=200, shuffle=True, pin_memory=True)
+		valid_dataset = BordersDataset(valid)
+		valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=200, shuffle=False, pin_memory=True)
+		test_dataset = BordersDataset(test)
+		test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
+		
+		device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+		loss = mse_loss
+		tl.train(train_dataloader, valid_dataloader, loss)
+		tl.save()
+		##################################################
+		tl.load()
+		tl.predict(test_dataloader, device)
+		##################################################
+		tl.readable_predict(device, print_result=True)
+		
