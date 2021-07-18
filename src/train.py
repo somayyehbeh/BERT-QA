@@ -240,7 +240,7 @@ if __name__=='__main__':
 			train = (X_train, y_train)
 			valid = (X_valid, y_valid)
 			test = (X_test, y_test)
-			print(f'\n\n############# Fold Number {fold} #############\n\n')
+			logging.info(f'\n\n############# Fold Number {fold} #############\n\n')
 			fold+=1
 			bert = BertModel.from_pretrained("bert-base-uncased")
 			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
@@ -255,7 +255,9 @@ if __name__=='__main__':
 			valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=200, shuffle=False, pin_memory=True)
 			test_dataset = BordersDataset(test)
 			test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
-			
+			logging.info(f'Train Dataset Contains {len(train_dataset)} Samples.')
+			logging.info(f'Valid Dataset Contains {len(valid_dataset)} Samples.')
+			logging.info(f'Test Dataset Contains {len(test_dataset)} Samples.')
 			device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 			loss = mse_loss
 			tl.train(train_dataloader, valid_dataloader, loss)
@@ -282,6 +284,10 @@ if __name__=='__main__':
 		test_dataset = BordersDataset(test)
 		test_dataloader = DataLoader(dataset=test_dataset, batch_size=100, shuffle=False, pin_memory=True)
 		
+		logging.info(f'Train Dataset Contains {len(train_dataset)} Samples.')
+		logging.info(f'Valid Dataset Contains {len(valid_dataset)} Samples.')
+		logging.info(f'Test Dataset Contains {len(test_dataset)} Samples.')
+
 		device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 		loss = mse_loss
 		tl.train(train_dataloader, valid_dataloader, loss)
