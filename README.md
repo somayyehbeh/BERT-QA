@@ -20,7 +20,7 @@ python data.py
 ```
 # Contributing
 `mehdi_j94@outlook.com`
-`somayyeh.behmanesh@gmail.com`
+`s_behmanesh@sbu.ac.ir`
 # License
 `# to do`
 # System Overview
