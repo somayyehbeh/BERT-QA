@@ -1,6 +1,5 @@
 # BERT-QA
-The `BERT QUESTION ANSWER` is `PYTHON SOURCE CODE` that allows `Researchers in the field of natural language processing`  to do `TRAINING/EVALUATION a QA system` on `reverb_wikipedia_tuples-1.1` Knowledge graph.
-# Prerequisites
+The `BERT QUESTION ANSWER` is `PYTHON SOURCE CODE` that allows `Researchers in the field of natural language processing`  to do `TRAINING/EVALUATION a QA system` on `reverb_wikipedia_tuples-1.1` Knowledge Base.
 1. `LINUX/WINDOWS`
 2. python=3.7
 3. transformers==4.6.0
