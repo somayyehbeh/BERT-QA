@@ -6,6 +6,18 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 logging.basicConfig(level=logging.DEBUG)
 
+def sq_read_data(datatype):
+	token_path=f'../bertified/SQ/{datatype}_tokenmat.npy'
+	relation_path=f'../bertified/SQ/{datatype}_relations.npy' 
+	entity_path=f'../bertified/SQ/{datatype}_entities.npy'
+	
+	tokens_matrix = np.load(token_path)
+	edgs_spans = np.load(relation_path)
+	nods_borders = np.load(entity_path)
+	borders = np.concatenate((nods_borders, edgs_spans), axis=1)
+	
+	return (tokens_matrix, borders)
+
 def read_data(path='../bertified/'):
 	tokens_matrix = np.load(os.path.join(path, 'tokenmat.npy'))
 	nods_borders = np.load(os.path.join(path, 'entities.npy'))

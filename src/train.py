@@ -3,7 +3,7 @@ from transformers import AdamW
 import torch
 from torch.nn.functional import nll_loss
 from torch.utils.data import Dataset, DataLoader
-from utils import read_data, nodes_get_f1, edges_get_f1
+from utils import read_data, nodes_get_f1, edges_get_f1, sq_read_data
 from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
@@ -269,6 +269,7 @@ if __name__=='__main__':
 			tl.readable_predict(device, print_result=True)
 
 	else:
+		# train, valid, test = sq_read_data('train'), sq_read_data('valid'), sq_read_data('test')
 		train, valid, test = read_data()
 		bert = BertModel.from_pretrained("bert-base-uncased")
 		tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
