@@ -42,8 +42,8 @@ def nodes_get_f1(predicts, golden):
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	overlap = (overlap_end - overlap_start)
 	recall = overlap / (gold_end - gold_start)
-	precision = overlap / (pred_end - pred_start)
-	f1 = np.divide(2 * recall * precision, recall + precision)
+	precision = overlap[(pred_end - pred_start) != 0] / (pred_end - pred_start)[(pred_end - pred_start) != 0]
+	f1 = np.divide(2 * recall[(pred_end - pred_start) != 0] * precision, recall[(pred_end - pred_start) != 0] + precision)
 	recall = recall.mean()
 	precision = precision.mean()
 	acc = (f1 == 1).mean()
