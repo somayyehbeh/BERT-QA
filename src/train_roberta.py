@@ -1,4 +1,4 @@
-from transformers import BertModel, BertTokenizer
+from transformers import BertModel, BertTokenizer, RobertaTokenizer, RobertaModel
 from transformers import AdamW
 import torch
 from torch.nn.functional import nll_loss
@@ -10,7 +10,7 @@ import numpy as np
 np.seterr(divide='ignore', invalid='ignore')
 from tabulate import tabulate
 from tqdm import tqdm
-
+import sys
 from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
 from torchcrf import CRF
@@ -67,12 +67,12 @@ class BertLSTMCRF(torch.nn.Module):
 		super().__init__(**kw)
 		self.bert = bert
 		dim = self.bert.config.hidden_size
-		self.nodestart = torch.nn.Linear(dim, 1)
-		self.nodeend = torch.nn.Linear(dim, 1)
+		self.nodestart = torch.nn.Linear(200, 1)
+		self.nodeend = torch.nn.Linear(200, 1)
 		
 		# self.edgestart = torch.nn.Linear(dim, 1)
 		# self.edgeend = torch.nn.Linear(dim, 1)
-		self.edgespan = torch.nn.Linear(dim, 1)
+		self.edgespan = torch.nn.Linear(200, 1)
 		
 		self.dropout = torch.nn.Dropout(p=dropout)
 		self.clip_len = clip_len
@@ -99,15 +99,19 @@ class BertLSTMCRF(torch.nn.Module):
 		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=False)
 		lhs = bert_outputs.last_hidden_state
 		a = self.dropout(lhs)
-		lstm_out, *_ = self.lstm(sequence_output)
-		logits_node_start = self.nodestart(lhs)
-		logits_node_end = self.nodeend(lhs)
-		logits_edge_span = self.edgespan(lhs)
-		# logits_edge_start = self.edgestart(lhs)
-		# logits_edge_end = self.edgeend(lhs)
-		# print(logits_node_start.size(), logits_node_end.size(), logits_edge_span.size())
+		lstm_out, *_ = self.lstm(lhs)
+		# print(lstm_out.size(), lhs.size())
+		# sys.exit()
+		logits_node_start = self.nodestart(lstm_out)
+		logits_node_end = self.nodeend(lstm_out)
+		logits_edge_span = self.edgespan(lstm_out)
+		
+    ## CRF
+		# ll = -self.crf(logits_node_start, labels, mask=mask.bool(), reduction="token_mean")
+		# sys.exit()
 		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
 							logits_edge_span.transpose(1, 2)], 1)
+		# print(logits.size())
 		return logits
 
 
@@ -275,7 +279,7 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	cross_validation = False
+	cross_validation = True
 	if cross_validation == True:
 		train, valid, test = read_data()
 		X = np.vstack((train[0], valid[0], test[0]))
@@ -291,9 +295,9 @@ if __name__=='__main__':
 			test = (X_test, y_test)
 			logging.info(f'\n\n############# Fold Number {fold} #############\n\n')
 			fold+=1
-			bert = BertModel.from_pretrained("bert-base-uncased")
-			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-			node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+			bert = RobertaModel.from_pretrained("roberta-base")
+			tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
+			node_edge_detector = BertLSTMCRF(bert, tokenizer, dropout=torch.tensor(0.5))
 			optimizer = AdamW
 			kw = {'lr':0.0002, 'weight_decay':0.1}
 			tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
@@ -322,7 +326,7 @@ if __name__=='__main__':
 		train, valid, test = read_data()
 		bert = BertModel.from_pretrained("bert-base-uncased")
 		tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-		node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+		node_edge_detector = BertLSTMCRF(bert, tokenizer, dropout=torch.tensor(0.5))
 		optimizer = AdamW
 		kw = {'lr':0.0002, 'weight_decay':0.1}
 		tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
