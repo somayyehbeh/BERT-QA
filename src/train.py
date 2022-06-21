@@ -1,6 +1,7 @@
 from transformers import BertModel, BertTokenizer
 from transformers import AdamW
 import torch
+from torch import nn
 from torch.nn.functional import nll_loss
 from torch.utils.data import Dataset, DataLoader
 from utils import read_data, nodes_get_f1, edges_get_f1, sq_read_data
@@ -10,11 +11,11 @@ import numpy as np
 np.seterr(divide='ignore', invalid='ignore')
 from tabulate import tabulate
 from tqdm import tqdm
-
+import torch.nn.functional as F
 from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
 from torchcrf import CRF
-
+import sys
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -54,13 +55,48 @@ class NodeEdgeDetector(torch.nn.Module):
 		logits_node_start = self.nodestart(lhs)
 		logits_node_end = self.nodeend(lhs)
 		logits_edge_span = self.edgespan(lhs)
-		# logits_edge_start = self.edgestart(lhs)
-		# logits_edge_end = self.edgeend(lhs)
-		# print(logits_node_start.size(), logits_node_end.size(), logits_edge_span.size())
 		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
 							logits_edge_span.transpose(1, 2)], 1)
 		return logits
 
+class BertCNN(torch.nn.Module):
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
+		super().__init__(**kw)
+		self.bert = bert
+		dim = self.bert.config.hidden_size
+		self.nodestart = torch.nn.Linear(160, 35)
+		self.nodeend = torch.nn.Linear(160, 35)
+		self.edgespan = torch.nn.Linear(160, 35)
+		self.dropout = torch.nn.Dropout(p=dropout)
+		self.clip_len = clip_len
+		self.tokenizer = tokenizer
+		filter_sizes = [1,2,3,4,5]
+		num_filters = 32
+		embed_size = 768
+		self.convs1 = nn.ModuleList([nn.Conv2d(4, num_filters, (K, embed_size)) for K in filter_sizes])
+		
+
+	def forward(self, x):	   # x: (batsize, seqlen) ints
+		mask = (x != 0).long()
+		if self.clip_len:
+			maxlen = mask.sum(1).max().item()
+			maxlen = min(x.size(1), maxlen + 1)
+			mask = mask[:, :maxlen]
+			x = x[:, :maxlen]
+		b, l = x.size()
+		x = self.bert(x, attention_mask=mask, output_hidden_states=True)[2][-4:]
+		x = torch.stack(x, dim=1)
+		x = [F.relu(conv(x)).squeeze(3) for conv in self.convs1] 
+		x = [F.max_pool1d(i, i.size(2)).squeeze(2) for i in x]  
+		x = torch.cat(x, 1)
+		x = self.dropout(x)
+		logits_node_start = torch.unsqueeze(self.nodestart(x), 1)
+		logits_node_end = torch.unsqueeze(self.nodeend(x), 1)
+		logits_edge_span = torch.unsqueeze(self.edgespan(x), 1)
+		# print(logits_node_start.size(), logits_node_end.size(), logits_edge_span.size())
+		logits = torch.cat([logits_node_start[:, :, :l], logits_node_end[:, :, :l], 
+							logits_edge_span[:, :, :l]], 1)
+		return logits
 
 class BertLSTMCRF(torch.nn.Module):
 	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
@@ -135,7 +171,7 @@ class TrainingLoop:
 	Everything related to model training
 	'''
 	def __init__(self, model, optimizer, freezeemb=True, 
-				 epochs=6, save_path='./models/', **kw):
+				 epochs=12, save_path='./models/', **kw):
 		self.model = model
 		params = []
 		for paramname, param in self.model.named_parameters():
@@ -275,7 +311,7 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	cross_validation = False
+	cross_validation = True
 	if cross_validation == True:
 		train, valid, test = read_data()
 		X = np.vstack((train[0], valid[0], test[0]))
