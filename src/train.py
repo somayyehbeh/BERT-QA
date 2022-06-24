@@ -16,10 +16,50 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
 from torchcrf import CRF
 import sys
-
+from transformers import DistilBertTokenizer, DistilBertModel
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
+
+class MultiDepthNodeEdgeDetector(torch.nn.Module):
+	'''
+	Neural Network architecture!
+	'''
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
+		super().__init__(**kw)
+		self.bert = bert
+		self.concat_last_n = 3
+		dim = self.bert.config.hidden_size
+		self.nodestart = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		self.nodeend = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		
+		self.edgespan = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		
+		self.dropout = torch.nn.Dropout(p=dropout)
+		# self.linear = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 2)
+		self.clip_len = clip_len
+
+		self.tokenizer = tokenizer
+
+	def forward(self, x):	   # x: (batsize, seqlen) ints
+		batch_size, seq_size = x.size()
+		mask = (x != 0).long()
+		if self.clip_len:
+			maxlen = mask.sum(1).max().item()
+			maxlen = min(x.size(1), maxlen + 1)
+			mask = mask[:, :maxlen]
+			x = x[:, :maxlen]
+		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=True)
+		
+		hidden = torch.cat(bert_outputs.hidden_states[-self.concat_last_n:], dim=-1)
+		
+		a = self.dropout(hidden)
+		logits_node_start = self.nodestart(a)
+		logits_node_end = self.nodeend(a)
+		logits_edge_span = self.edgespan(a)
+		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
+							logits_edge_span.transpose(1, 2)], 1)
+		return logits
 
 
 class NodeEdgeDetector(torch.nn.Module):
@@ -171,7 +211,7 @@ class TrainingLoop:
 	Everything related to model training
 	'''
 	def __init__(self, model, optimizer, freezeemb=True, 
-				 epochs=12, save_path='./models/', **kw):
+				 epochs=6, save_path='./models/', **kw):
 		self.model = model
 		params = []
 		for paramname, param in self.model.named_parameters():
@@ -311,7 +351,7 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	cross_validation = True
+	cross_validation = False
 	if cross_validation == True:
 		train, valid, test = read_data()
 		X = np.vstack((train[0], valid[0], test[0]))
@@ -327,8 +367,8 @@ if __name__=='__main__':
 			test = (X_test, y_test)
 			logging.info(f'\n\n############# Fold Number {fold} #############\n\n')
 			fold+=1
-			bert = BertModel.from_pretrained("bert-base-uncased")
-			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+			bert = DistilBertModel.from_pretrained("bert-base-uncased")
+			tokenizer = DistilBertTokenizer.from_pretrained("bert-base-uncased")
 			node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
 			optimizer = AdamW
 			kw = {'lr':0.0002, 'weight_decay':0.1}
@@ -356,8 +396,8 @@ if __name__=='__main__':
 	else:
 		# train, valid, test = sq_read_data('train'), sq_read_data('valid'), sq_read_data('test')
 		train, valid, test = read_data()
-		bert = BertModel.from_pretrained("bert-base-uncased")
-		tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+		bert = DistilBertModel.from_pretrained("bert-base-uncased")
+		tokenizer = DistilBertTokenizer.from_pretrained("bert-base-uncased")
 		node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
 		optimizer = AdamW
 		kw = {'lr':0.0002, 'weight_decay':0.1}
