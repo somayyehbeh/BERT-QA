@@ -175,7 +175,7 @@ class BertLSTMCRF(torch.nn.Module):
 		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=False)
 		lhs = bert_outputs.last_hidden_state
 		a = self.dropout(lhs)
-		lstm_out, *_ = self.lstm(sequence_output)
+		lstm_out, *_ = self.lstm(a)
 		logits_node_start = self.nodestart(lhs)
 		logits_node_end = self.nodeend(lhs)
 		logits_edge_span = self.edgespan(lhs)
@@ -351,7 +351,14 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	cross_validation = False
+	model_type = sys.argv[1]
+	mapping = {'MultiDepthNodeEdgeDetector':MultiDepthNodeEdgeDetector,
+              'BertLSTMCRF':BertLSTMCRF, 
+              'BertCNN':BertCNN,
+              'NodeEdgeDetector':NodeEdgeDetector
+            }
+	cross_validation = eval(sys.argv[2])
+	
 	if cross_validation == True:
 		train, valid, test = read_data()
 		X = np.vstack((train[0], valid[0], test[0]))
@@ -367,9 +374,9 @@ if __name__=='__main__':
 			test = (X_test, y_test)
 			logging.info(f'\n\n############# Fold Number {fold} #############\n\n')
 			fold+=1
-			bert = DistilBertModel.from_pretrained("bert-base-uncased")
-			tokenizer = DistilBertTokenizer.from_pretrained("bert-base-uncased")
-			node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+			bert = BertModel.from_pretrained("bert-base-uncased")
+			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+			node_edge_detector = mapping[model_type](bert, tokenizer, dropout=torch.tensor(0.5))
 			optimizer = AdamW
 			kw = {'lr':0.0002, 'weight_decay':0.1}
 			tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
