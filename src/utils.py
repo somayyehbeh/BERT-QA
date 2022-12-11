@@ -6,6 +6,18 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 logging.basicConfig(level=logging.DEBUG)
 
+def sq_read_data(datatype):
+	token_path=f'../bertified/SQ/{datatype}_tokenmat.npy'
+	relation_path=f'../bertified/SQ/{datatype}_relations.npy' 
+	entity_path=f'../bertified/SQ/{datatype}_entities.npy'
+	
+	tokens_matrix = np.load(token_path)
+	edgs_spans = np.load(relation_path)
+	nods_borders = np.load(entity_path)
+	borders = np.concatenate((nods_borders, edgs_spans), axis=1)
+	
+	return (tokens_matrix, borders)
+
 def read_data(path='../bertified/'):
 	tokens_matrix = np.load(os.path.join(path, 'tokenmat.npy'))
 	nods_borders = np.load(os.path.join(path, 'entities.npy'))
@@ -30,8 +42,8 @@ def nodes_get_f1(predicts, golden):
 	logging.info(', '.join([str(item) for item in [f1.item(), precision.item(), recall.item()]]))
 	overlap = (overlap_end - overlap_start)
 	recall = overlap / (gold_end - gold_start)
-	precision = overlap / (pred_end - pred_start)
-	f1 = np.divide(2 * recall * precision, recall + precision)
+	precision = overlap[(pred_end - pred_start) != 0] / (pred_end - pred_start)[(pred_end - pred_start) != 0]
+	f1 = np.divide(2 * recall[(pred_end - pred_start) != 0] * precision, recall[(pred_end - pred_start) != 0] + precision)
 	recall = recall.mean()
 	precision = precision.mean()
 	acc = (f1 == 1).mean()

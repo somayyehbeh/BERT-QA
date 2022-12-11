@@ -1,24 +1,65 @@
 from transformers import BertModel, BertTokenizer
 from transformers import AdamW
 import torch
+from torch import nn
 from torch.nn.functional import nll_loss
 from torch.utils.data import Dataset, DataLoader
-from utils import read_data, nodes_get_f1, edges_get_f1
+from utils import read_data, nodes_get_f1, edges_get_f1, sq_read_data
 from torch.nn.functional import mse_loss
 from torch.nn.functional import one_hot
 import numpy as np 
 np.seterr(divide='ignore', invalid='ignore')
 from tabulate import tabulate
 from tqdm import tqdm
-
+import torch.nn.functional as F
 from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
-
-
-
+from torchcrf import CRF
+import sys
+from transformers import DistilBertTokenizer, DistilBertModel
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
+
+class MultiDepthNodeEdgeDetector(torch.nn.Module):
+	'''
+	Neural Network architecture!
+	'''
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
+		super().__init__(**kw)
+		self.bert = bert
+		self.concat_last_n = 3
+		dim = self.bert.config.hidden_size
+		self.nodestart = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		self.nodeend = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		
+		self.edgespan = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 1)
+		
+		self.dropout = torch.nn.Dropout(p=dropout)
+		# self.linear = torch.nn.Linear(self.concat_last_n * self.bert.config.hidden_size, 2)
+		self.clip_len = clip_len
+
+		self.tokenizer = tokenizer
+
+	def forward(self, x):	   # x: (batsize, seqlen) ints
+		batch_size, seq_size = x.size()
+		mask = (x != 0).long()
+		if self.clip_len:
+			maxlen = mask.sum(1).max().item()
+			maxlen = min(x.size(1), maxlen + 1)
+			mask = mask[:, :maxlen]
+			x = x[:, :maxlen]
+		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=True)
+		
+		hidden = torch.cat(bert_outputs.hidden_states[-self.concat_last_n:], dim=-1)
+		
+		a = self.dropout(hidden)
+		logits_node_start = self.nodestart(a)
+		logits_node_end = self.nodeend(a)
+		logits_edge_span = self.edgespan(a)
+		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
+							logits_edge_span.transpose(1, 2)], 1)
+		return logits
 
 
 class NodeEdgeDetector(torch.nn.Module):
@@ -51,6 +92,90 @@ class NodeEdgeDetector(torch.nn.Module):
 		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=False)
 		lhs = bert_outputs.last_hidden_state
 		a = self.dropout(lhs)
+		logits_node_start = self.nodestart(lhs)
+		logits_node_end = self.nodeend(lhs)
+		logits_edge_span = self.edgespan(lhs)
+		logits = torch.cat([logits_node_start.transpose(1, 2), logits_node_end.transpose(1, 2), 
+							logits_edge_span.transpose(1, 2)], 1)
+		return logits
+
+class BertCNN(torch.nn.Module):
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
+		super().__init__(**kw)
+		self.bert = bert
+		dim = self.bert.config.hidden_size
+		self.nodestart = torch.nn.Linear(160, 35)
+		self.nodeend = torch.nn.Linear(160, 35)
+		self.edgespan = torch.nn.Linear(160, 35)
+		self.dropout = torch.nn.Dropout(p=dropout)
+		self.clip_len = clip_len
+		self.tokenizer = tokenizer
+		filter_sizes = [1,2,3,4,5]
+		num_filters = 32
+		embed_size = 768
+		self.convs1 = nn.ModuleList([nn.Conv2d(4, num_filters, (K, embed_size)) for K in filter_sizes])
+		
+
+	def forward(self, x):	   # x: (batsize, seqlen) ints
+		mask = (x != 0).long()
+		if self.clip_len:
+			maxlen = mask.sum(1).max().item()
+			maxlen = min(x.size(1), maxlen + 1)
+			mask = mask[:, :maxlen]
+			x = x[:, :maxlen]
+		b, l = x.size()
+		x = self.bert(x, attention_mask=mask, output_hidden_states=True)[2][-4:]
+		x = torch.stack(x, dim=1)
+		x = [F.relu(conv(x)).squeeze(3) for conv in self.convs1] 
+		x = [F.max_pool1d(i, i.size(2)).squeeze(2) for i in x]  
+		x = torch.cat(x, 1)
+		x = self.dropout(x)
+		logits_node_start = torch.unsqueeze(self.nodestart(x), 1)
+		logits_node_end = torch.unsqueeze(self.nodeend(x), 1)
+		logits_edge_span = torch.unsqueeze(self.edgespan(x), 1)
+		# print(logits_node_start.size(), logits_node_end.size(), logits_edge_span.size())
+		logits = torch.cat([logits_node_start[:, :, :l], logits_node_end[:, :, :l], 
+							logits_edge_span[:, :, :l]], 1)
+		return logits
+
+class BertLSTMCRF(torch.nn.Module):
+	def __init__(self, bert, tokenizer, dropout=0.5, clip_len=True, **kw):
+		super().__init__(**kw)
+		self.bert = bert
+		dim = self.bert.config.hidden_size
+		self.nodestart = torch.nn.Linear(dim, 1)
+		self.nodeend = torch.nn.Linear(dim, 1)
+		
+		# self.edgestart = torch.nn.Linear(dim, 1)
+		# self.edgeend = torch.nn.Linear(dim, 1)
+		self.edgespan = torch.nn.Linear(dim, 1)
+		
+		self.dropout = torch.nn.Dropout(p=dropout)
+		self.clip_len = clip_len
+
+		self.tokenizer = tokenizer
+
+		self.crf_entity = CRF(2, batch_first=True)
+		self.crf_relation = CRF(2, batch_first=True)
+		self.lstm = torch.nn.LSTM(
+            input_size=dim,
+            hidden_size=100,
+            num_layers=2,
+            dropout=0.2,
+            batch_first=True,
+            bidirectional=True,
+        )
+	def forward(self, x):	   # x: (batsize, seqlen) ints
+		mask = (x != 0).long()
+		if self.clip_len:
+			maxlen = mask.sum(1).max().item()
+			maxlen = min(x.size(1), maxlen + 1)
+			mask = mask[:, :maxlen]
+			x = x[:, :maxlen]
+		bert_outputs = self.bert(x, attention_mask=mask, output_hidden_states=False)
+		lhs = bert_outputs.last_hidden_state
+		a = self.dropout(lhs)
+		lstm_out, *_ = self.lstm(a)
 		logits_node_start = self.nodestart(lhs)
 		logits_node_end = self.nodeend(lhs)
 		logits_edge_span = self.edgespan(lhs)
@@ -226,7 +351,14 @@ class TrainingLoop:
 			return wordstoberttokens, berttokenstoids, input_token_ids, nodes_borders, edges_spans, node, edge
 
 if __name__=='__main__':
-	cross_validation = False
+	model_type = sys.argv[1]
+	mapping = {'MultiDepthNodeEdgeDetector':MultiDepthNodeEdgeDetector,
+              'BertLSTMCRF':BertLSTMCRF, 
+              'BertCNN':BertCNN,
+              'NodeEdgeDetector':NodeEdgeDetector
+            }
+	cross_validation = eval(sys.argv[2])
+	
 	if cross_validation == True:
 		train, valid, test = read_data()
 		X = np.vstack((train[0], valid[0], test[0]))
@@ -244,7 +376,7 @@ if __name__=='__main__':
 			fold+=1
 			bert = BertModel.from_pretrained("bert-base-uncased")
 			tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-			node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
+			node_edge_detector = mapping[model_type](bert, tokenizer, dropout=torch.tensor(0.5))
 			optimizer = AdamW
 			kw = {'lr':0.0002, 'weight_decay':0.1}
 			tl = TrainingLoop(node_edge_detector, optimizer, True, **kw)
@@ -269,9 +401,10 @@ if __name__=='__main__':
 			tl.readable_predict(device, print_result=True)
 
 	else:
+		# train, valid, test = sq_read_data('train'), sq_read_data('valid'), sq_read_data('test')
 		train, valid, test = read_data()
-		bert = BertModel.from_pretrained("bert-base-uncased")
-		tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+		bert = DistilBertModel.from_pretrained("bert-base-uncased")
+		tokenizer = DistilBertTokenizer.from_pretrained("bert-base-uncased")
 		node_edge_detector = NodeEdgeDetector(bert, tokenizer, dropout=torch.tensor(0.5))
 		optimizer = AdamW
 		kw = {'lr':0.0002, 'weight_decay':0.1}
